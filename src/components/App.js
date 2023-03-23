@@ -4,9 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 /** import components */
 import Main from './Main';
-import Quiz from './Quiz';
-import Result from './Result';
-import { CheckUserExist } from '../helper/helper';
+import { Categories } from './questionSet';
 
 
 /** react routes */
@@ -17,12 +15,12 @@ const router = createBrowserRouter([
   },
   {
     path : '/quiz',
-    element : <CheckUserExist><Quiz /></CheckUserExist>
+    element : <Categories/>
   },
-  {
-    path : '/result',
-    element : <CheckUserExist><Result /></CheckUserExist>
-  },
+  // {
+  //   path : '/result',
+  //   element : 
+  // },
 ])
 
 function App() {
