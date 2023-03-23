@@ -8,7 +8,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material"
 export const Categories = () => {
 
     const [count, setCount] = useState(0)
-    console.log(count)
+    // console.log(count)
 
 
     const question = allQuestions[count]
@@ -17,8 +17,10 @@ export const Categories = () => {
     const { Q1, Q2, Q3, Q4, Q5 } = question
 
     const header = Heading[count]
-    console.log(header)
+    // console.log(header)
     const { H } = header
+
+    const C = count + 1
 
     return (
 
@@ -27,7 +29,7 @@ export const Categories = () => {
 
             <Typography variant ="h5">{H}</Typography>
             
-                <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} />
+                <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
                 
             
             <Stack direction="row" justifyContent="center" alignItems="center">
@@ -43,7 +45,7 @@ export const Categories = () => {
                         </IconButton>
                 }
                 {
-                    count > 0
+                    count > 3
                         ?
                         <IconButton >
                             <Button>Next</Button>

@@ -5,20 +5,31 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import { useEffect } from 'react'; 
 
-export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
+export const Sections = ({ Q1, Q2, Q3, Q4, Q5 , C}) => {
 
-    const [value1, setValue1] = React.useState(0);
-    const [value2, setValue2] = React.useState(0);
-    const [value3, setValue3] = React.useState(0);
-    const [value4, setValue4] = React.useState(0);
-    const [value5, setValue5] = React.useState(0);
-    console.log(value1)
+    const [value1, setValue1] = React.useState("");
+    const [value2, setValue2] = React.useState("");
+    const [value3, setValue3] = React.useState("");
+    const [value4, setValue4] = React.useState("");
+    const [value5, setValue5] = React.useState("");
+    // console.log(value1)
     // console.log(value2)
     // console.log(value3)
     // console.log(value4)
     // console.log(value5)
+
+   useEffect(
+    ( )=>(
+      setValue1(""),
+      setValue2(""),
+      setValue3(""),
+      setValue4(""),
+      setValue5("")
+    ), [C]
+   )
 
     const handleChange1 = (event) => {
         setValue1(event.target.value);
@@ -36,10 +47,31 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
         setValue5(event.target.value);
     };
 
+const result = [
+(+value1),
+(+value2),
+(+value3),
+(+value4),
+(+value5)
+]
+
+const sum = result.reduce( function(total, amount){
+    return total + amount
+  });
+  console.log(`total sum of category ${C} is ${sum}`)
+
+const  averageSum = sum/5
+
+console.log(`average sum of category ${C} is ${averageSum}`)
+
+
+  
+
     return (
 
         <Stack direction="column" alignItems="left" justifyContent="left">
             <ol>
+                <Typography>{`Category ${C}`}</Typography>
                 <li> <h3> {Q1}</h3> </li>
 
                 <FormControl>
