@@ -12,15 +12,20 @@ export const Categories = () => {
 
 
     const question = allQuestions[count]
-    console.log(allQuestions.length)
+    
 
     const { Q1, Q2, Q3, Q4, Q5 } = question
 
+    const header = Heading[count]
+    console.log(header)
+    const { H } = header
 
     return (
+
+        
         <Stack marginLeft={3} justifyItems="center">
 
-            <Typography></Typography>
+            <Typography variant ="h5">{H}</Typography>
             
                 <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} />
                 
@@ -52,5 +57,6 @@ export const Categories = () => {
             </Stack>
 
         </Stack>
+       
     )
 }

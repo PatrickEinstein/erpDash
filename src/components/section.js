@@ -39,7 +39,8 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
     return (
 
         <Stack direction="column" alignItems="left" justifyContent="left">
-            <h3> {Q1}</h3>
+         <ol> 
+            <li> <h3> {Q1}</h3> </li>
 
             <FormControl>
 
@@ -57,7 +58,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
                 </RadioGroup>
             </FormControl>
 
-            <h3> {Q2}</h3>
+            <li>    <h3> {Q2}</h3></li>
 
             <FormControl>
 
@@ -75,7 +76,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
                 </RadioGroup>
             </FormControl>
 
-            <h3> {Q3}</h3>
+            <li>  <h3> {Q3}</h3></li>
             <FormControl>
 
                 <RadioGroup
@@ -91,7 +92,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
                     <FormControlLabel value={1} control={<Radio />} label="Very Low" />
                 </RadioGroup>
             </FormControl>
-            <h3> {Q4}</h3>
+            <li>   <h3> {Q4}</h3></li>
             <FormControl>
 
                 <RadioGroup
@@ -107,7 +108,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
                     <FormControlLabel value={1} control={<Radio />} label="Very Low" />
                 </RadioGroup>
             </FormControl>
-            <h3> {Q5}</h3>
+            <li>  <h3> {Q5}</h3></li>
             <FormControl>
 
                 <RadioGroup
@@ -124,7 +125,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 }) => {
                 </RadioGroup>
             </FormControl>
 
-
+            </ol> 
         </Stack>
 
 
