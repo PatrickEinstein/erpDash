@@ -1,3 +1,20 @@
+This is the skeletal frame work of a cbt app
+
+it fetches the question from the question object on the frontend
+
+it fetches five questions for each category
+
+the values picked are stored in a state which is later pushed into an array
+
+this array is reduced and used to update redux
+
+at the final submit click, the redux state is conveyed wholly to the database
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
