@@ -1,20 +1,28 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { setUserId } from '../redux/result_reducer'
+
+import { Link, useNavigate } from 'react-router-dom'
+import { setUser } from '../redux/result_reducer'
 import '../styles/Main.css'
 import { useState } from 'react'
+import { Button, IconButton, useTheme } from '@mui/material'
+import { useDispatch } from 'react-redux'
 
 export default function Main() {
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
 
+// const theme = useTheme()
+// console.log(theme)
+    // function to sumbit this will be called here
+    const handleSubmit =( ) =>(
+dispatch(setUser({firstName, lastName, email, phone})),
+navigate("/quiz")
+)
 
-  // function to sumbit this will be called here
-    
 
     return (
         <div className='container'>
@@ -34,7 +42,7 @@ export default function Main() {
                     type="text"
                     placeholder='First Name'
                     value={firstName}
-                    onChange={(e) => setFirstName(e.value.target)}
+                    onChange={(e) => setFirstName(e.target.value)}
                 />
                 <input
                     style={{ marginBottom: "3%" }}
@@ -42,30 +50,31 @@ export default function Main() {
                     type="text"
                     placeholder='Last Name'
                     value={lastName}
-                    onChange={(e) => setFirstName(e.value.target)}
+                    onChange={(e) => setLastName(e.target.value)}
                 />
                 <input
                     style={{ marginBottom: "3%" }}
                     className="userid"
                     type="text"
-                    placeholder='E -mail'
+                    placeholder='E-mail'
                     value={email}
-                    onChange={(e) => setFirstName(e.value.target)}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
-                 <input
+                <input
                     style={{ marginBottom: "3%" }}
                     className="userid"
                     type="text"
                     placeholder='Phone'
                     value={phone}
-                    onChange={(e) => setPhone(e.value.target)}
+                    onChange={(e) => setPhone(e.target.value)}
                 />
             </form>
 
-            <div className='start'>
-                <button className="btn" type="submit"> Start</button>
-            </div>
-
+            <IconButton onClick={handleSubmit}>
+                <Button >
+                    Start
+                </Button>
+            </IconButton>
         </div>
     )
 }

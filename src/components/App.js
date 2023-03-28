@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 /** import components */
 import Main from './Main';
 import { Categories } from './questionSet';
+import { Success } from './success';
+// import VerticalTabs  from './section2';
 
 
 /** react routes */
@@ -15,12 +17,12 @@ const router = createBrowserRouter([
   },
   {
     path : '/quiz',
-    element : <Categories/>
+    element : < Categories/>
   },
-  // {
-  //   path : '/result',
-  //   element : 
-  // },
+  {
+    path : '/success',
+    element : <Success/>
+  },
 ])
 
 function App() {

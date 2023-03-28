@@ -1,13 +1,37 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import resultReducer from './result_reducer'; //name of the reducer
+import {
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST, PURGE,
+    REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-/** call reducers */
-import questionReducer from './question_reducer';
-import resultReducer from './result_reducer';
+
 
 const rootReducer = combineReducers({
-    questions : questionReducer,
-    result : resultReducer
-})
+    result: resultReducer
+}) // use this root reducer in case u will have more than one reducer
 
-/** create store with reducer */
-export default configureStore({ reducer : rootReducer});
+
+const persistConfig = { key: "root", storage, version: 1 };
+export const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+console.log(store.getState());
+
+const unsubscribe = store.subscribe(() =>
+console.log('State after dispatch: ', store.getState()));

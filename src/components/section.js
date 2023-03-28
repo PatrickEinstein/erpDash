@@ -6,30 +6,26 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useState } from 'react';
 import { Stack, Typography } from '@mui/material';
-import { useEffect } from 'react'; 
+import { useDispatch } from 'react-redux';
+import { setCat1, setCat2, setCat3, setCat4, setCat5, setCat6, setCat7, setCat8, setCat9, setCat10, setCat11, setCat12, setCat13, setCat14, setCat15 } from "../redux/result_reducer"
+import { useEffect } from 'react';
+import { setTotalResult } from '../redux/result_reducer';
 
-export const Sections = ({ Q1, Q2, Q3, Q4, Q5 , C}) => {
 
+
+
+export const averageSum = (sum) => (
+   sum/5
+)
+
+export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
+    const dispatch = useDispatch()
     const [value1, setValue1] = React.useState("");
     const [value2, setValue2] = React.useState("");
     const [value3, setValue3] = React.useState("");
     const [value4, setValue4] = React.useState("");
     const [value5, setValue5] = React.useState("");
-    // console.log(value1)
-    // console.log(value2)
-    // console.log(value3)
-    // console.log(value4)
-    // console.log(value5)
 
-   useEffect(
-    ( )=>(
-      setValue1(""),
-      setValue2(""),
-      setValue3(""),
-      setValue4(""),
-      setValue5("")
-    ), [C]
-   )
 
     const handleChange1 = (event) => {
         setValue1(event.target.value);
@@ -47,25 +43,102 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5 , C}) => {
         setValue5(event.target.value);
     };
 
-const result = [
-(+value1),
-(+value2),
-(+value3),
-(+value4),
-(+value5)
-]
-
-const sum = result.reduce( function(total, amount){
-    return total + amount
-  });
-  console.log(`total sum of category ${C} is ${sum}`)
-
-const  averageSum = sum/5
-
-console.log(`average sum of category ${C} is ${averageSum}`)
+    const result = [
+        (+value1),
+        (+value2),
+        (+value3),
+        (+value4),
+        (+value5)
+    ]
 
 
-  
+
+    const sum = result.reduce(function (total, amount) {
+        return total + amount
+    });
+    console.log(`total sum of category ${C} is ${sum}`)
+
+   const averagesum = averageSum(sum);
+
+    console.log(`average sum of category ${C} is ${averagesum}`)
+
+
+
+
+    const dispatchers = () => {
+        switch (C) {
+
+            case 2:
+                return dispatch(setCat1(averagesum))
+                break;
+            case 3:
+                return dispatch(setCat2(averagesum))
+                break;
+            case 4:
+                return dispatch(setCat3(averagesum))
+                break;
+            case 5:
+                return dispatch(setCat4(averagesum))
+                break;
+            case 6:
+                return dispatch(setCat5(averagesum))
+                break;
+            case 7:
+                return dispatch(setCat6(averagesum))
+                break;
+            case 8:
+                return dispatch(setCat7(averagesum))
+                break;
+            case 9:
+                return dispatch(setCat8(averagesum))
+                break;
+            case 10:
+                return dispatch(setCat9(averagesum))
+                break
+            case 11:
+                return dispatch(setCat10(averagesum))
+                break;
+            case 12:
+                return dispatch(setCat11(averagesum))
+                break;
+            case 13:
+                return dispatch(setCat12(averagesum))
+                break;
+
+            case 14:
+                return dispatch(setCat13(averagesum))
+                break;
+            case 15:
+                return dispatch(setCat14(averagesum))
+                break;
+           
+
+
+        }
+    }
+
+
+
+    useEffect(
+        () => {
+            dispatchers();
+           
+            console.log("Component1 has mounted...");
+            setValue1("")
+                setValue2("")
+                setValue3("")
+                setValue4("")
+                setValue5("")
+            return () => {
+                
+                console.log("Component1 has unmounted...")
+            }
+
+        }
+        , [C])
+
+
+
 
     return (
 
