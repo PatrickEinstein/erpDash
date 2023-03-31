@@ -144,7 +144,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
 
         <Stack direction="column" alignItems="left" justifyContent="left">
             <ol>
-                <Typography>{`Category ${C}`}</Typography>
+                
                 <li> <h3> {Q1}</h3> </li>
 
                 <FormControl>

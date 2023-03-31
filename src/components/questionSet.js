@@ -1,88 +1,86 @@
-import React, { useState } from "react"
-import { allQuestions } from "./questions"
-import { Sections } from "./section"
-import { Heading } from "./questionsHeading"
-import { Button, IconButton, Stack, Typography } from "@mui/material"
-import { Pagination } from "@mui/material"
-import { useDispatch } from "react-redux"
-import { setCat15 } from "../redux/result_reducer"
-import {averageSum} from "./section"
-import { useNavigate } from "react-router-dom"
-
+import React, { useState } from "react";
+import { allQuestions } from "./questions";
+import { Sections } from "./section";
+import { Heading } from "./questionsHeading";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setCat15 } from "../redux/result_reducer";
+import { useNavigate } from "react-router-dom";
+import Pagination from "react-mui-pagination";
+import { useMediaQuery } from "@material-ui/core";
 
 export const Categories = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isNonMediaScreens = useMediaQuery("(min-width:900)");
+  const [count, setCount] = React.useState(0);
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const question = allQuestions[count];
+  const { Q1, Q2, Q3, Q4, Q5 } = question;
+  const header = Heading[count];
+  const { H } = header;
+  const C = count + 1;
 
-    const [count, setCount] = React.useState(0)
-    const handlePage = (event, value) => {
-        setCount(value);
-    };
-    const question = allQuestions[count]
-    const { Q1, Q2, Q3, Q4, Q5 } = question
-    const header = Heading[count]
-    const { H } = header
-    const C = count + 1
+  const handleSubmit = () => (
+    dispatch(setCat15(5)), alert("success"), navigate("/success")
+  );
 
-    const handleSubmit = ( ) =>(
-        dispatch(setCat15(5)),
-        alert("success"),
-        navigate("/success")
-    )
+  const handleChange = (event, value) => {
+    setCount(value - 1);
+  };
 
+  const onPrevious = () => {
+    setCount((count) => count - 1);
+  };
 
-    return (
+  const onNext = () => {
+    setCount((count) => count + 1);
+  };
 
+  return (
+    <Stack justifyContent="center" alignItem="center" spacing={10}>
+      <Pagination
+        page={count + 1}
+        setPage={handleChange}
+        total={150}
+        numOfLinks={isNonMediaScreens ? 10 : 5}
+      />
 
-        <Stack marginLeft={3} justifyItems="center">
+      <Box
+        sx={{}}
+        // backgroundColor="powderblue"
+        width={isNonMediaScreens ? 700 : 500}
+      >
+        <Typography>{`category ${C}`}</Typography>
+        <Typography variant="h5">{H}</Typography>
 
-            <Typography variant="h5">{H}</Typography>
+        <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
 
-            <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
+        <Stack direction="row" justifyContent="center" alignItems="center">
+          {count < 1 ? (
+            <IconButton>
+              <Button>Previous</Button>
+            </IconButton>
+          ) : (
+            <IconButton onClick={onPrevious}>
+              <Button>Previous</Button>
+            </IconButton>
+          )}
 
-
-            <Stack direction="row" justifyContent="center" alignItems="center">
-
-                {
-                    count < 1
-                        ?
-                        <IconButton >
-                            <Button>Previous</Button>
-                        </IconButton>
-                        :
-                        <IconButton onClick={() => setCount((count) => count - 1)}>
-                            <Button>Previous</Button>
-                        </IconButton>
-                }
-
-                {
-                    count < 14 
-                    ?
-                    <IconButton onClick={() => setCount((count) => count + 1)} >
-                        <Button>Next</Button>
-                    </IconButton>
-                    :
-                    <IconButton onClick={handleSubmit}>
-                        <Button>Submit</Button>
-                    </IconButton>
-                   }
-                
-                
-                
-    
-                
-               
-
-            </Stack>
-            {/* <Stack spacing={2}>
-
-                <Pagination count={10} page={count} onChange={handlePage} />
-            </Stack> */}
+          {count < 14 ? (
+            <IconButton onClick={onNext}>
+              <Button>Next</Button>
+            </IconButton>
+          ) : (
+            <IconButton onClick={handleSubmit}>
+              <Button>Submit</Button>
+            </IconButton>
+          )}
         </Stack>
-
-    )
-}
+      </Box>
+    </Stack>
+  );
+};
 
 // (() => {
 //     switch (count) {
@@ -100,7 +98,6 @@ export const Categories = () => {
 //                 </IconButton>
 //             )
 //             break;
-       
 
 //     }
 // })()
