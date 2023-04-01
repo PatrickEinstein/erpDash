@@ -6,14 +6,19 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from './Main';
 import { Categories } from './questionSet';
 import { Success } from './success';
+import { Main2 } from './Main2';
 // import VerticalTabs  from './section2';
 
 
 /** react routes */
 const router = createBrowserRouter([
   {
-    path : '/',
+    path : '/prep',
     element : <Main></Main>
+  },
+  {
+    path : '/',
+    element : <Main2></Main2>
   },
   {
     path : '/quiz',

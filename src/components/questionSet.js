@@ -8,8 +8,11 @@ import { setCat15 } from "../redux/result_reducer";
 import { useNavigate } from "react-router-dom";
 import Pagination from "react-mui-pagination";
 import { useMediaQuery } from "@material-ui/core";
+import { Success } from "./success";
+import { useTheme } from "@mui/material/styles";
 
 export const Categories = () => {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMediaScreens = useMediaQuery("(min-width:900)");
@@ -21,9 +24,7 @@ export const Categories = () => {
   const { H } = header;
   const C = count + 1;
 
-  const handleSubmit = () => (
-    dispatch(setCat15(5)), alert("success"), navigate("/success")
-  );
+  const handleSubmit = () => (dispatch(setCat15(5)), navigate("/success"));
 
   const handleChange = (event, value) => {
     setCount(value - 1);
@@ -38,22 +39,42 @@ export const Categories = () => {
   };
 
   return (
-    <Stack justifyContent="center" alignItem="center" spacing={10}>
+    <Stack
+      spacing={5}
+      backgroundColor="powderblue"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{
+        height: "auto",
+        p: 3,
+      }}
+    >
+      {" "}
       <Pagination
         page={count + 1}
         setPage={handleChange}
         total={150}
-        numOfLinks={isNonMediaScreens ? 10 : 5}
+        numOfLinks={isNonMediaScreens ? 10 : 2}
       />
-
       <Box
         sx={{}}
         // backgroundColor="powderblue"
-        width={isNonMediaScreens ? 700 : 500}
+        width={isNonMediaScreens ? 700 : "auto"}
       >
         <Typography>{`category ${C}`}</Typography>
-        <Typography variant="h5">{H}</Typography>
-
+        <Typography
+          variant="h5"
+          align="center"
+          // color={theme.palette.primary.light}
+          sx={{
+           
+            fontWeight: "bold",
+            fontSize: "20px",
+            color:"white"
+          }}
+        >
+          {H}
+        </Typography>
         <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
 
         <Stack direction="row" justifyContent="center" alignItems="center">
