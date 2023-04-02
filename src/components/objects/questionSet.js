@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { allQuestions } from "./questions";
-import { Sections } from "./section";
+import { Sections } from "../pages/section";
 import { Heading } from "./questionsHeading";
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { setCat15 } from "../redux/result_reducer";
+import { setCat15 } from "../../redux/result_reducer";
 import { useNavigate } from "react-router-dom";
 import Pagination from "react-mui-pagination";
 import { useMediaQuery } from "@material-ui/core";
-import { Success } from "./success";
+import { Success } from "../pages/success";
 import { useTheme } from "@mui/material/styles";
 
 export const Categories = () => {

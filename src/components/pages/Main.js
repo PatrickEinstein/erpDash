@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import "../styles/Main.css";
+// import "../styles/Main.css";
 
 import { Button, IconButton, Typography} from "@mui/material";
 import { useDispatch } from "react-redux";

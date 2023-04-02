@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
-import { setUser } from "../redux/result_reducer";
+import { setUser } from "../../redux/result_reducer";
 
 import { useDispatch } from "react-redux";
 

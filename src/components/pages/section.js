@@ -24,9 +24,9 @@ import {
   setCat13,
   setCat14,
   setCat15,
-} from "../redux/result_reducer";
+} from "../../redux/result_reducer";
 import { useEffect } from "react";
-import { setTotalResult } from "../redux/result_reducer";
+import { setTotalResult } from "../../redux/result_reducer";
 import { useMediaQuery } from "@material-ui/core";
 
 export const averageSum = (sum) => sum / 5;

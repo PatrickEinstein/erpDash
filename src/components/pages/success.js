@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import {
   setTotalResult,
   setTotalAveragePercentage,
-} from "../redux/result_reducer";
+} from "../../redux/result_reducer";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";

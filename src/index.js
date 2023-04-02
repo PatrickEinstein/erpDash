@@ -6,8 +6,6 @@ import { store } from './redux/store';
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from 'react-redux'
 import { persistStore } from "redux-persist";
-import { persistedReducer } from './redux/store';
-
 
 
 

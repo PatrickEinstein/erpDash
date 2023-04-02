@@ -13,7 +13,7 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import { faker } from "@faker-js/faker";
 import { GoogleLogo, SlackLogo, StripeLogo, UserCircle } from "phosphor-react";
 import { useMediaQuery } from "@mui/material";
-import { Forms } from "./form";
+import { Forms } from "../objects/form";
 
 export const Main2 = () => {
   const theme = useTheme();
