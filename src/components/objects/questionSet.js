@@ -88,7 +88,7 @@ export const Categories = () => {
             </IconButton>
           )}
 
-          {count < 14 ? (
+          {count < 15 ? (
             <IconButton onClick={onNext}>
               <Button>Next</Button>
             </IconButton>

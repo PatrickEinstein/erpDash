@@ -8,7 +8,7 @@ import { Categories } from './objects/questionSet';
 import { Success } from './pages/success';
 import { Main2 } from './pages/Main2';
 import { Breakdown } from './pages/breakdown';
-import { Recommendations, Recommends1 } from './recommendations/recommendation';
+import {  Recommends1 } from './recommendations/recommendation';
 
 
 /** react routes */
@@ -33,10 +33,7 @@ const router = createBrowserRouter([
     path : '/summary',
     element : <Breakdown/>
   },
-  {
-    path : '/scores',
-    element : <Recommends1/>
-  },
+ 
 ])
 
 function App() {

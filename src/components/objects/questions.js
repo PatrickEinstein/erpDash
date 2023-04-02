@@ -102,5 +102,7 @@ export  const allQuestions = [{
     "Q3": "How would you rate your capacity to source and secure an agent or distributor in the export market?",
     "Q4": "How would you rate your capacity to get and pay a logistics service provider in the export market?",
     "Q5": "How would you rate your capacity to get and pay a marketing consultant in the export market?"
-}
+},
+{
+ }
 ]

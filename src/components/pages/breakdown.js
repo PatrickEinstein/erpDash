@@ -9,6 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
+
 import {
   Recommends1,
   Recommends2,
@@ -45,24 +46,7 @@ import {
   Implications15,
   ImplicationsAveragePercentage,
 } from "../implications/implications";
-import {
-  Suggestions1,
-  Suggestions2,
-  Suggestions3,
-  Suggestions4,
-  Suggestions5,
-  Suggestions6,
-  Suggestions7,
-  Suggestions8,
-  Suggestions9,
-  Suggestions10,
-  Suggestions11,
-  Suggestions12,
-  Suggestions13,
-  Suggestions14,
-  Suggestions15,
-  SuggestionsAveragePercentage,
-} from "../implications/implications";
+import { Box, Stack, Typography } from "@mui/material";
 
 const columns = [
   { id: "name", label: "Category", minWidth: 100 },
@@ -73,7 +57,7 @@ const columns = [
     format: (value) => value.toFixed(2),
   },
   {
-    id: "Implication",
+    id: "population",
     label: "Implication",
     minWidth: 100,
     align: "right",
@@ -86,13 +70,13 @@ const columns = [
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "density",
-    label: "Suggestion",
-    minWidth: 100,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
+  // {
+  //   id: "density",
+  //   label: "Suggestion",
+  //   minWidth: 100,
+  //   align: "right",
+  //   format: (value) => value.toFixed(2),
+  // },
 ];
 
 function createData(name, code, population, size, density) {
@@ -133,21 +117,21 @@ export const Breakdown = () => {
   const userInfo = isresult.user;
 
   const rows = [
-    createData("1", cat1, <Recommends1 />, 3310),
-    createData("2", cat2, <Recommends2 />),
-    createData("3", cat3, <Recommends3 />),
-    createData("4", cat4, <Recommends4 />),
-    createData("5", cat5, <Recommends5 />),
-    createData("6", cat6, <Recommends6 />),
-    createData("7", cat7, <Recommends7 />),
-    createData("8", cat8, <Recommends8 />),
-    createData("9", cat9, <Recommends9 />),
-    createData("10", cat10, <Recommends10 />),
-    createData("11", cat11, <Recommends11 />),
-    createData("12", cat12, <Recommends12 />),
-    createData("13", cat13, <Recommends13 />),
-    createData("14", cat14, <Recommends14 />),
-    createData("15", cat15, <Recommends15 />),
+    createData("Positioning", cat1, <Implications1 />, <Recommends1 />),
+    createData("Promoters", cat2, <Implications2 />, <Recommends2 />),
+    createData("Products", cat3, <Implications3 />, <Recommends3 />),
+    createData("Pricing", cat4, <Implications4 />, <Recommends4 />),
+    createData("Predisposition", cat5, <Implications5 />, <Recommends5 />),
+    createData("Purpose", cat6, <Implications6 />, <Recommends6 />),
+    createData("Payment", cat7, <Implications7 />, <Recommends7 />),
+    createData("Production", cat8, <Implications8 />, <Recommends8 />),
+    createData("Proficiency", cat9, <Implications9 />, <Recommends9 />),
+    createData("People", cat10, <Implications10 />, <Recommends10 />),
+    createData("Paperwork", cat11, <Implications11 />, <Recommends11 />),
+    createData("Potentials", cat12, <Implications12 />, <Recommends12 />),
+    createData("Promotion", cat13, <Implications13 />, <Recommends13 />),
+    createData("Purchasers", cat14, <Implications14 />, <Recommends14 />),
+    createData("partnership", cat15, <Implications15 />, <Recommends15 />),
     ,
     createData(
       "Total Score",
@@ -163,23 +147,56 @@ export const Breakdown = () => {
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={1}>
-                <img src={faker.image.avatar()} />
+                <Box
+                  sx={{
+                    width: 100,
+                    height: 100,
+                  }}
+                >
+                 
+                  <img src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150" style={{
+                    width : 100,
+                    height : 100
+                  }}/>
+                </Box>
               </TableCell>
               <TableCell align="center" colSpan={1}>
                 Name :
               </TableCell>
               <TableCell align="center" colSpan={3}>
-                {userInfo.firstName} {userInfo.lastName}
+                <Stack>
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {userInfo.firstName} {userInfo.lastName}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {userInfo.email}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {userInfo.phone}
+                  </Typography>
+                </Stack>
               </TableCell>
             </TableRow>
             <TableRow>
-              {columns.map((column) => (
+              {columns.map(({ id, align, label, minWidth }) => (
                 <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
+                  key={id}
+                  align={align}
+                  style={{ top: 57, minWidth: minWidth }}
                 >
-                  {column.label}
+                  {label}
                 </TableCell>
               ))}
             </TableRow>
@@ -190,12 +207,12 @@ export const Breakdown = () => {
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
+                    {columns.map(({ id, align, label, minWidth, format }) => {
+                      const value = row[id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
+                        <TableCell key={id} align={align}>
+                          {format && typeof value === "number"
+                            ? format(value)
                             : value}
                         </TableCell>
                       );

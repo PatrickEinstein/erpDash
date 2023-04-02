@@ -28,11 +28,13 @@ import {
 import { useEffect } from "react";
 import { setTotalResult } from "../../redux/result_reducer";
 import { useMediaQuery } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 export const averageSum = (sum) => sum / 5;
 
 export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [value1, setValue1] = React.useState("");
   const [value2, setValue2] = React.useState("");
   const [value3, setValue3] = React.useState("");
@@ -112,6 +114,10 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
       case 15:
         return dispatch(setCat14(averagesum));
         break;
+        case 16:
+          return dispatch(setCat15(averagesum)),
+          navigate("/success")
+          break;
     }
   };
 
