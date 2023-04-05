@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   setTotalResult,
   setTotalAveragePercentage,
@@ -7,13 +7,18 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
+import axios from "axios";
+import { saveAs } from "file-saver";
+
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useMediaQuery } from "@mui/material";
+
 import { useNavigate } from "react-router";
 import { useTheme } from "@mui/material/styles";
+
+import { Breakdown } from "./breakdown";
+
 export const Success = () => {
   const theme = useTheme();
   //   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -40,7 +45,7 @@ export const Success = () => {
   const istotalAveragePercentage = isresult.totalAveragePercentage;
   const userInfo = isresult.user;
 
-  console.log(userInfo);
+ 
 
   const totalResults = [
     +cat1,
@@ -59,13 +64,13 @@ export const Success = () => {
     +cat14,
     +cat15,
   ];
-  console.log(totalResults);
+
   const TotalResult = totalResults.reduce(function (total, amount) {
     return total + amount;
   });
 
   const totalAveragePercentage = (TotalResult / 75) * 100;
-  console.log(totalAveragePercentage);
+
 
   try {
     dispatch(setTotalResult(TotalResult));
@@ -74,9 +79,25 @@ export const Success = () => {
     console.log(err);
   }
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    try {
+      const savedUserResponse = await fetch(
+        "http://localhost:5001/create-pdf",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            data : isresult
+          }),
+        }
+      ).then((res) => console.log(res));
+    } catch (error) {
+      console.log(error);
+    }
+  
     setOpen(false);
-    navigate("/");
+
+    // navigate("/");
   };
 
   return (
@@ -94,51 +115,51 @@ export const Success = () => {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
+              <Typography>Drear </Typography>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                {userInfo.firstName} {userInfo.lastName}
+              </Typography>
+              Your Export readiness shows your are
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                {" "}
+                {istotalAveragePercentage.toFixed(2)}%
+              </Typography>
+              ready. check{" "}
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                {userInfo.email}
+              </Typography>{" "}
               <Typography>
-                Drear{" "}
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  {userInfo.firstName} {userInfo.lastName}
-                </Typography>
-                Your Export readiness shows your are
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  {" "}
-                  {istotalAveragePercentage.toFixed(2)}%
-                </Typography>
-                ready. check{" "}
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  {userInfo.email}
-                </Typography>{" "}
                 for breakdown, implications and suggestions of scores
               </Typography>
             </DialogContentText>
           </DialogContent>
           {/* <DialogActions> */}
-            <Button onClick={handleClose}
+          <Button
+            onClick={handleClose}
             sx={{
-                width:"20%",
-                ml : '40%',
-                mb : "2%"
+              width: "20%",
+              ml: "40%",
+              mb: "2%",
             }}
-            
             variant="contained"
-            >
-              Finish
-            </Button>
+          >
+            Finish
+          </Button>
           {/* </DialogActions> */}
         </Dialog>
       ) : (
