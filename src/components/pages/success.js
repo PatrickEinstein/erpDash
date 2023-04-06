@@ -97,7 +97,7 @@ export const Success = () => {
   
     setOpen(false);
 
-    // navigate("/");
+   navigate("/summary");
   };
 
   return (
