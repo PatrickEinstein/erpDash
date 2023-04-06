@@ -157,16 +157,21 @@ export const Breakdown = () => {
                 >
                  
                   <img src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150" style={{
-                    width : 100,
-                    height : 100,
+                    width : 50,
+                    height : 50,
                     backgroundColor:"white"
                   }}/>
                 </Box>
               </TableCell>
-              <TableCell align="center" colSpan={1}>
-                Name :
+              <TableCell align="left" colSpan={2}>
+              <Typography
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >EXPORT READINESS TEST FOR
+                  </Typography>
               </TableCell>
-              <TableCell align="center" colSpan={3}>
+              <TableCell align="left" colSpan={3}>
                 <Stack>
                   <Typography
                     sx={{
