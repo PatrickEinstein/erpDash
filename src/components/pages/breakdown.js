@@ -60,14 +60,14 @@ const columns = [
     id: "population",
     label: "Implication",
     minWidth: 100,
-    align: "right",
+    align: "left",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "size",
     label: "Recommendation",
     minWidth: 100,
-    align: "right",
+    align: "left",
     format: (value) => value.toLocaleString("en-US"),
   },
   // {
@@ -135,8 +135,10 @@ export const Breakdown = () => {
     ,
     createData(
       "Total Score",
-      istotalAveragePercentage.toFixed(2),
-      <RecommendsAveragePercentage />
+      istotalAveragePercentage.toFixed(2) + "%",
+      <ImplicationsAveragePercentage/>,
+      <RecommendsAveragePercentage />,
+      
     ),
   ];
 
@@ -156,7 +158,8 @@ export const Breakdown = () => {
                  
                   <img src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150" style={{
                     width : 100,
-                    height : 100
+                    height : 100,
+                    backgroundColor:"white"
                   }}/>
                 </Box>
               </TableCell>

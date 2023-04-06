@@ -183,7 +183,7 @@ export const Implications12 = () => {
       r4="Low score in potential is an indication of lack of understanding of the export market opportunities"
       rs="The management of the company has an excellent understanding of the export market opportunities"
     />
-  )
+  );
 };
 export const Implications13 = () => {
   const isresult = useSelector((state) => state.result);
@@ -221,7 +221,7 @@ export const Implications15 = () => {
   return (
     // Partnership
     <RecommendationsImplication
-      cat={cat15 }
+      cat={cat15}
       r1="Low score in partnership is an indication of lack of understanding of how to identify and work with service providers in the export market"
       r2="Low score in partnership is an indication of lack of understanding of how to identify and work with service providers in the export market"
       r3="Low score in partnership is an indication of lack of understanding of how to identify and work with service providers in the export market"
@@ -236,11 +236,11 @@ export const ImplicationsAveragePercentage = () => {
   return (
     <RecommendationsImplication
       cat={istotalAveragePercentage}
-      r1=""
-      r2=""
-      r3=""
-      r4=""
-      r5=""
+      r1="Getting ready to start the journey to exportation-  focus on overcoming the teething problem of business setup"
+      r2="Just starting the journey to export business -needs to concentrate local business development and less on export readiness  "
+      r3="Midway to positioning for sustainable export business – have a long way to go, should not start export but focus on export readiness"
+      r4="Almost positioned for sustainable export business- can start export, but needs to fix few areas readiness to be sustainable"
+      r5="Positioned for sustainable export business – can start exporting immediately"
     />
   );
 };
