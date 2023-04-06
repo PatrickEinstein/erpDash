@@ -62,6 +62,7 @@ export const Forms = () => {
                   label="firstName"
                   id="outlined-size-small"
                   size="small"
+                  type="text"
                   fullWidth
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -70,6 +71,7 @@ export const Forms = () => {
               <Box gridColumn="span 12">
                 <TextField
                   label="Lastname"
+                  type="text"
                   id="outlined-size-small"
                   size="small"
                   fullWidth
@@ -80,6 +82,7 @@ export const Forms = () => {
               <Box gridColumn="span 12">
                 <TextField
                   label="Phone"
+                  type="number"
                   id="outlined-size-small"
                   size="small"
                   fullWidth
@@ -90,6 +93,7 @@ export const Forms = () => {
               <Box gridColumn="span 12">
                 <TextField
                   label="E-mail"
+                  type="email"
                   id="outlined-size-small"
                   size="small"
                   fullWidth
