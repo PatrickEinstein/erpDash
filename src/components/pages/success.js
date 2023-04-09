@@ -110,38 +110,39 @@ export const Success = () => {
           aria-describedby="alert-dialog-description"
           //   fullScreen={fullScreen}
         >
-          <DialogTitle id="alert-dialog-title">
-            {"You Have Succesfully Completed The Export Readiness Test"}
+          <DialogTitle id="alert-dialog-title" fontSize={20}>
+            {"Your Export Readiness Assesment "}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <Typography>Drear </Typography>
+             
               <Typography
                 sx={{
                   fontWeight: "bold",
                   fontSize: "20px",
                 }}
               >
-                {userInfo.firstName} {userInfo.lastName}
+               Dear, {userInfo.firstName} {userInfo.lastName}
               </Typography>
-              Your Export readiness shows your are
+              Your Export readiness score is 
               <Typography
+              variant="body"
                 sx={{
                   fontWeight: "bold",
-                  fontSize: "20px",
+                  fontSize: "15px",
                 }}
               >
                 {" "}
-                {istotalAveragePercentage.toFixed(2)}%
+                {istotalAveragePercentage.toFixed(2)}% ,
               </Typography>
-              ready. check{" "}
+                <span> kindly check </span>
               <Typography
                 sx={{
                   fontWeight: "bold",
                   fontSize: "20px",
                 }}
               >
-                {userInfo.email}
+              {userInfo.email}
               </Typography>{" "}
               <Typography>
                 for breakdown, implications and suggestions of scores

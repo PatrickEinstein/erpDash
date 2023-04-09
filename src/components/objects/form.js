@@ -7,9 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-
+import { shades } from "../../theme";
 import { setUser } from "../../redux/result_reducer";
-
 import { useDispatch } from "react-redux";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,21 +24,28 @@ export const Forms = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [Products, setProducts] = useState("");
+
   const navigate = useNavigate();
-  
+
   const dispatch = useDispatch();
   const handleSubmit = () => {
     if (!firstName || !lastName || !lastName) {
       alert(" Kindly Tell me about you");
     } else {
-      dispatch(setUser({ firstName, lastName, email, phone }));
-      navigate("/prep");
+      dispatch(
+        setUser({ firstName, lastName, email, phone, companyName, Products })
+      );
+      navigate("/quiz");
     }
 
     return;
   };
 
-  const theme = useTheme();
+  const {
+    palette: { neutral },
+  } = useTheme();
   return (
     <Box>
       <Stack
@@ -59,7 +65,7 @@ export const Forms = () => {
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 12">
                 <TextField
-                  label="firstName"
+                  label="Firstname"
                   id="outlined-size-small"
                   size="small"
                   type="text"
@@ -101,6 +107,32 @@ export const Forms = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Box>
+              <Box gridColumn="span 12">
+                <TextField
+                  label="Company name"
+                  type="text"
+                  id="outlined-size-small"
+                  multiline
+                  maxRows={6}
+                  size="small"
+                  fullWidth
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                />
+              </Box>
+              <Box gridColumn="span 12">
+                <TextField
+                  label="Products"
+                  type="text"
+                  id="outlined-size-small"
+                  multiline
+                  maxRows={6}
+                  size="small"
+                  fullWidth
+                  value={Products}
+                  onChange={(e) => setProducts(e.target.value)}
+                />
+              </Box>
             </Box>
           </Box>
           <Button
@@ -108,17 +140,17 @@ export const Forms = () => {
             color="info"
             style={{
               backgroundColor: "white",
-              width:"40%",
-              ml : '40%',
+              width: "40%",
+              ml: "40%",
             }}
             onClick={handleSubmit}
           >
             <Typography
-              variant="subtitle2"
+              color={shades.primary[900]}
+              variant="h3"
               sx={{
                 fontSize: "8px",
               }}
-              color={theme.palette.primary.main}
             >
               Enroll now
             </Typography>

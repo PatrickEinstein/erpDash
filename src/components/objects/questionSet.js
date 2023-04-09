@@ -9,9 +9,13 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "react-mui-pagination";
 import { useMediaQuery } from "@material-ui/core";
 import { Success } from "../pages/success";
-import { useTheme } from "@mui/material/styles";
-
+import { shades } from "../../theme";
+// import { useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material";
 export const Categories = () => {
+  const {
+    palette: { neutral },
+  } = useTheme();
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,7 +45,7 @@ export const Categories = () => {
   return (
     <Stack
       spacing={5}
-      backgroundColor="powderblue"
+      backgroundColor="aqua"
       justifyContent="space-between"
       alignItems="center"
       sx={{
@@ -55,50 +59,145 @@ export const Categories = () => {
         setPage={handleChange}
         total={150}
         numOfLinks={isNonMediaScreens ? 10 : 2}
+        hideFirstLast
+        
       />
+
+
       <Box
         sx={{}}
         // backgroundColor="powderblue"
         width={isNonMediaScreens ? 700 : "auto"}
       >
-        <Typography>{`category ${C}`}</Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          // color={theme.palette.primary.light}
-          sx={{
-           
-            fontWeight: "bold",
-            fontSize: "20px",
-            color:"white"
+        <Button
+          variant="contained"
+          color="info"
+          style={{
+            backgroundColor: "white",
+            marginBottom: "20px",
+            ml: "40%",
+            height: 30,
+            borderRadius:10
           }}
+          
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              fontSize: "15px",
+            }}
+            color={shades.neutral[900]}
+          >
+            {`category ${C}`}
+          </Typography>
+        </Button>
+
+        <Typography
+          variant="h4"
+          sx={{
+            fontSize: "15px",
+            marginBottom: "20px"
+          }}
+          color={theme.palette.primary.main}
+          // color={shades.primary[900]}
         >
           {H}
         </Typography>
         <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
 
-        <Stack direction="row" justifyContent="center" alignItems="center">
+        <Stack direction="row" justifyContent="center" alignItems="center" spacing={10}>
           {count < 1 ? (
-            <IconButton>
-              <Button>Previous</Button>
-            </IconButton>
+            <Button
+              variant="contained"
+              color="info"
+              style={{
+                backgroundColor: "white",
+                height: 25,
+                ml: "40%",
+              }}
+            >
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontSize: "10px",
+                }}
+                color={theme.palette.primary.main}
+              >
+                Previous
+              </Typography>
+            </Button>
           ) : (
             <IconButton onClick={onPrevious}>
-              <Button>Previous</Button>
+              <Button
+                variant="contained"
+                color="info"
+                style={{
+                  backgroundColor: "white",
+                  height: 25,
+                  ml: "40%",
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontSize: "10px",
+                  }}
+                  color={theme.palette.primary.main}
+                >
+                  Previous
+                </Typography>
+              </Button>
             </IconButton>
           )}
 
           {count < 15 ? (
             <IconButton onClick={onNext}>
-              <Button>Next</Button>
+              <Button
+                variant="contained"
+                color="info"
+                style={{
+                  backgroundColor: "white",
+                  height: 25,
+                  ml: "40%",
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontSize: "10px",
+                  }}
+                  color={theme.palette.primary.main}
+                >
+                Next
+                </Typography>
+              </Button>
             </IconButton>
           ) : (
             <IconButton onClick={handleSubmit}>
-              <Button>Submit</Button>
+              <Button
+                variant="contained"
+                color="info"
+                style={{
+                  backgroundColor: "white",
+                  height: 25,
+                  ml: "40%",
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontSize: "10px",
+                  }}
+                  color={theme.palette.primary.main}
+                >
+                  Submit
+                </Typography>
+              </Button>
             </IconButton>
           )}
         </Stack>
       </Box>
+      
     </Stack>
   );
 };

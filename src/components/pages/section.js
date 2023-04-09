@@ -7,7 +7,7 @@ import FormLabel from "@mui/material/FormLabel";
 import { useState } from "react";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-
+import { useTheme } from "@mui/material/styles";
 import {
   setCat1,
   setCat2,
@@ -35,6 +35,7 @@ export const averageSum = (sum) => sum / 5;
 export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const theme = useTheme();
   const [value1, setValue1] = React.useState("");
   const [value2, setValue2] = React.useState("");
   const [value3, setValue3] = React.useState("");
@@ -133,19 +134,27 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
 
   return (
     <Stack
-      spacing={5}
+      spacing={10}
       backgroundColor="white"
       justifyContent="space-between"
         alignItems="center"
       sx={{
         height:"auto",
+        borderRadius:10
       }}
     >
       <ol>
       
           <li>
             {" "}
-            <h3> {Q1}</h3>{" "}
+            <Typography
+              variant="h4"
+              sx={{
+                fontSize: "15px",
+                fontWeight:"bold"
+              }}
+              color={theme.palette.primary.main}
+            >{Q1}</Typography>{" "}
           </li>
 
           <FormControl>
@@ -159,6 +168,9 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
                 value={5}
                 control={<Radio />}
                 label="Very high"
+                sx={{
+              fontSize:5
+                }}
               />
               <FormControlLabel value={4} control={<Radio />} label="High" />
               <FormControlLabel
@@ -178,7 +190,14 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
        
         <li>
           {" "}
-          <h3> {Q2}</h3>
+          <Typography
+              variant="h4"
+              sx={{
+                fontSize: "15px",
+                fontWeight:"bold"
+              }}
+              color={theme.palette.primary.main}
+            >{Q2}</Typography>
         </li>
 
         <FormControl>
@@ -202,7 +221,14 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
         <Divider/>
         <li>
           {" "}
-          <h3> {Q3}</h3>
+          <Typography
+              variant="h4"
+              sx={{
+                fontSize: "15px",
+                fontWeight:"bold"
+              }}
+              color={theme.palette.primary.main}
+            >{Q3}</Typography>
         </li>
         <FormControl>
           <RadioGroup
@@ -225,7 +251,14 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
         <Divider/>
         <li>
           {" "}
-          <h3> {Q4}</h3>
+          <Typography
+              variant="h4"
+              sx={{
+                fontSize: "15px",
+                fontWeight:"bold"
+              }}
+              color={theme.palette.primary.main}
+            > {Q4}</Typography>
         </li>
         <FormControl>
           <RadioGroup
@@ -248,7 +281,14 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
         <Divider/>
         <li>
           {" "}
-          <h3> {Q5}</h3>
+          <Typography
+              variant="h4"
+              sx={{
+                fontSize: "15px",
+                fontWeight:"bold"
+              }}
+              color={theme.palette.primary.main}
+            >{Q5}</Typography>
         </li>
         <FormControl>
           <RadioGroup

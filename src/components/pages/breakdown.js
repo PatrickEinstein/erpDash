@@ -136,9 +136,8 @@ export const Breakdown = () => {
     createData(
       "Total Score",
       istotalAveragePercentage.toFixed(2) + "%",
-      <ImplicationsAveragePercentage/>,
-      <RecommendsAveragePercentage />,
-      
+      <ImplicationsAveragePercentage />,
+      <RecommendsAveragePercentage />
     ),
   ];
 
@@ -155,45 +154,35 @@ export const Breakdown = () => {
                     height: 100,
                   }}
                 >
-                 
-                  <img src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150" style={{
-                    width : 50,
-                    height : 50,
-                    backgroundColor:"white"
-                  }}/>
+                  <img
+                    src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150"
+                    style={{
+                      width: 50,
+                      height: 50,
+                      backgroundColor: "white",
+                    }}
+                  />
                 </Box>
               </TableCell>
               <TableCell align="left" colSpan={2}>
-              <Typography
-                    sx={{
-                      fontWeight: "bold",
-                    }}
-                  >EXPORT READINESS TEST FOR
-                  </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  EXPORT READINESS TEST FOR
+                </Typography>
               </TableCell>
               <TableCell align="left" colSpan={3}>
                 <Stack>
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                    }}
-                  >
+                  <Typography>
+                    <span style={{ fontWeight: "bold" }}> Name :</span>{" "}
                     {userInfo.firstName} {userInfo.lastName}
                   </Typography>
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {userInfo.email}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {userInfo.phone}
-                  </Typography>
+                  <Typography><span style={{ fontWeight: "bold" }}> Company :</span>  {userInfo.companyName}</Typography>
+                  <Typography><span style={{ fontWeight: "bold" }}> Products : </span>  {userInfo.Products}</Typography>
+                  <Typography><span style={{ fontWeight: "bold" }}>Email :</span>  {userInfo.email}</Typography>
+                  <Typography><span style={{ fontWeight: "bold" }}> Phone : </span>{userInfo.phone}</Typography>
                 </Stack>
               </TableCell>
             </TableRow>

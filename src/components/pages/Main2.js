@@ -7,7 +7,9 @@ import {
   Zoom,
 } from "@mui/material";
 import React from "react";
-import { useTheme } from "@mui/material/styles";
+// import { useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material";
+import { shades } from "../../theme";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { faker } from "@faker-js/faker";
@@ -16,7 +18,10 @@ import { useMediaQuery } from "@mui/material";
 import { Forms } from "../objects/form";
 
 export const Main2 = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
+  const {
+    palette: { neutral },
+  } = useTheme();
   const isNonMobileScreen = useMediaQuery("(min-width:900px)");
 
   return (
@@ -47,27 +52,24 @@ export const Main2 = () => {
           </AvatarGroup>
           <Stack>
             <Typography
+              color={shades.neutral[100]}
               sx={{
                 fontWeight: "bold",
                 fontSize: 15,
-                color: theme.palette.secondary.contrastText,
               }}
             >
               255k+
             </Typography>
             <Typography
-              sx={{
-                color: theme.palette.secondary.contrastText,
-              }}
-            >
-              Previews
-            </Typography>
+              color={shades.neutral[100]}
+              // variant="subtitle"
+            >Previews</Typography>
           </Stack>
         </Stack>
         <Typography
-          variant="h5"
+         color={shades.neutral[100]}
+          variant="h3"
           align="center"
-          color={theme.palette.secondary.contrastText}
           sx={{
             pr: 4,
             pl: 4,
@@ -87,14 +89,14 @@ export const Main2 = () => {
         >
           <Avatar
             alt="Remy Sharp"
-        src={faker.image.avatar()}
+            src={faker.image.avatar()}
             sx={{ width: 150, height: 150 }}
           />
         </Box>
         <Typography
           variant="h5"
           align="center"
-          color={theme.palette.secondary.contrastText}
+          color={shades.neutral[100]}
           sx={{
             pt: 2,
             pr: 4,
