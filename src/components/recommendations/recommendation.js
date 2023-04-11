@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { AveragePercentageLogic, RecommendationsImplication } from "./recommendationImplicationLogic";
+import {
+  AveragePercentageLogic,
+  RecommendationsImplication,
+  GradingLogic,
+} from "./recommendationImplicationLogic";
 
 export const Recommends1 = () => {
   const isresult = useSelector((state) => state.result);
@@ -241,6 +245,21 @@ export const RecommendsAveragePercentage = () => {
       r3="Midway to positioning for sustainable export business – have a long way to go, should not start export but focus on export readiness"
       r4="Almost positioned for sustainable export business- can start export, but needs to fix few areas readiness to be sustainable"
       r5="Positioned for sustainable export business – can start exporting immediately"
+    />
+  );
+};
+
+export const Grading = () => {
+  const isresult = useSelector((state) => state.result);
+  const istotalAveragePercentage = isresult.totalAveragePercentage;
+  return (
+    <GradingLogic
+      cat={istotalAveragePercentage}
+      r1="E"
+      r2="D"
+      r3="C"
+      r4="B"
+      r5="A"
     />
   );
 };

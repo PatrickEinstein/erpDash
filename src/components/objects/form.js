@@ -10,6 +10,8 @@ import Paper from "@mui/material/Paper";
 import { shades } from "../../theme";
 import { setUser } from "../../redux/result_reducer";
 import { useDispatch } from "react-redux";
+import { UserCircle, Users, UsersThree } from "phosphor-react";
+import { SupervisedUserCircleRounded, VerifiedUserRounded } from "@material-ui/icons";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -20,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const Forms = () => {
+  const theme = useTheme();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +61,7 @@ export const Forms = () => {
         }}
       >
         {/* 1 */}
-        <Avatar src={faker.image.avatar()} />
+        <UsersThree size={100} />
         {/* w */}
         <Stack spacing={3}>
           <Box sx={{ width: "100%" }}>
@@ -72,6 +75,9 @@ export const Forms = () => {
                   fullWidth
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
+                  sx={{
+                    backgroundColor: "white",
+                  }}
                 />
               </Box>
               <Box gridColumn="span 12">
@@ -83,6 +89,9 @@ export const Forms = () => {
                   fullWidth
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
+                  sx={{
+                    backgroundColor: "white",
+                  }}
                 />
               </Box>
               <Box gridColumn="span 12">
@@ -93,7 +102,16 @@ export const Forms = () => {
                   size="small"
                   fullWidth
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  maxLength={11}
+                  sx={{
+                    backgroundColor: "white",
+                  }}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= 10) {
+                      setPhone(value);
+                    }
+                  }}
                 />
               </Box>
               <Box gridColumn="span 12">
@@ -105,6 +123,9 @@ export const Forms = () => {
                   fullWidth
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  sx={{
+                    backgroundColor: "white",
+                  }}
                 />
               </Box>
               <Box gridColumn="span 12">
@@ -116,6 +137,9 @@ export const Forms = () => {
                   maxRows={6}
                   size="small"
                   fullWidth
+                  sx={{
+                    backgroundColor: "white",
+                  }}
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                 />
@@ -129,6 +153,9 @@ export const Forms = () => {
                   maxRows={6}
                   size="small"
                   fullWidth
+                  sx={{
+                    backgroundColor: "white",
+                  }}
                   value={Products}
                   onChange={(e) => setProducts(e.target.value)}
                 />

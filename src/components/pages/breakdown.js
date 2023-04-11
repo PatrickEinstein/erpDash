@@ -9,6 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
+import { Grading } from "../recommendations/recommendation";
 
 import {
   Recommends1,
@@ -47,6 +48,7 @@ import {
   ImplicationsAveragePercentage,
 } from "../implications/implications";
 import { Box, Stack, Typography } from "@mui/material";
+
 
 const columns = [
   { id: "name", label: "Category", minWidth: 100 },
@@ -139,88 +141,129 @@ export const Breakdown = () => {
       <ImplicationsAveragePercentage />,
       <RecommendsAveragePercentage />
     ),
+    createData("Grade","..." ,<Grading/>),
   ];
 
   return (
-    <Paper sx={{ width: "auto" }}>
-      <TableContainer sx={{ maxHeight: "auto" }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={1}>
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 100,
-                  }}
-                >
-                  <img
-                    src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150"
-                    style={{
-                      width: 50,
-                      height: 50,
-                      backgroundColor: "white",
+    <Stack
+      sx={{
+        margin: 10,
+      }}
+    >
+      <Box
+        height={15}
+        sx={{
+          padding: 3,
+        }}
+      >
+        <Typography
+          align="center"
+          variant="h4"
+          sx={{
+            fontSize: "25px",
+            fontWeight: "bold",
+          }}
+        >
+          {" "}
+          Export Readiness Test for {userInfo.companyName}
+        </Typography>
+      </Box>
+      <Paper sx={{ width: "auto" }}>
+        <TableContainer sx={{ maxHeight: "auto" }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={1}>
+                  <Box
+                    sx={{
+                      width: 100,
+                      height: 100,
                     }}
-                  />
-                </Box>
-              </TableCell>
-              <TableCell align="left" colSpan={2}>
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  EXPORT READINESS TEST FOR
-                </Typography>
-              </TableCell>
-              <TableCell align="left" colSpan={3}>
-                <Stack>
-                  <Typography>
-                    <span style={{ fontWeight: "bold" }}> Name :</span>{" "}
-                    {userInfo.firstName} {userInfo.lastName}
-                  </Typography>
-                  <Typography><span style={{ fontWeight: "bold" }}> Company :</span>  {userInfo.companyName}</Typography>
-                  <Typography><span style={{ fontWeight: "bold" }}> Products : </span>  {userInfo.Products}</Typography>
-                  <Typography><span style={{ fontWeight: "bold" }}>Email :</span>  {userInfo.email}</Typography>
-                  <Typography><span style={{ fontWeight: "bold" }}> Phone : </span>{userInfo.phone}</Typography>
-                </Stack>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              {columns.map(({ id, align, label, minWidth }) => (
-                <TableCell
-                  key={id}
-                  align={align}
-                  style={{ top: 57, minWidth: minWidth }}
-                >
-                  {label}
+                  >
+                    <img
+                      src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150"
+                      style={{
+                        width: 80,
+                        height: 80,
+                        backgroundColor: "white",
+                      }}
+                    />
+                  </Box>
                 </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map(({ id, align, label, minWidth, format }) => {
-                      const value = row[id];
-                      return (
-                        <TableCell key={id} align={align}>
-                          {format && typeof value === "number"
-                            ? format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {/* <TablePagination
+                <TableCell align="left" colSpan={2}>
+                  {/* <Typography
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    EXPORT READINESS TEST FOR
+                  </Typography> */}
+                </TableCell>
+                <TableCell align="left" colSpan={3}>
+                  <Stack>
+                    <Typography>
+                      <span style={{ fontWeight: "bold" }}> Name :</span>{" "}
+                      {userInfo.firstName} {userInfo.lastName}
+                    </Typography>
+                    <Typography>
+                      <span style={{ fontWeight: "bold" }}> Company :</span>{" "}
+                      {userInfo.companyName}
+                    </Typography>
+                    <Typography>
+                      <span style={{ fontWeight: "bold" }}> Products : </span>{" "}
+                      {userInfo.Products}
+                    </Typography>
+                    <Typography>
+                      <span style={{ fontWeight: "bold" }}>Email :</span>{" "}
+                      {userInfo.email}
+                    </Typography>
+                    <Typography>
+                      <span style={{ fontWeight: "bold" }}> Phone : </span>
+                      {userInfo.phone}
+                    </Typography>
+                  </Stack>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                {columns.map(({ id, align, label, minWidth }) => (
+                  <TableCell
+                    key={id}
+                    align={align}
+                    style={{ top: 57, minWidth: minWidth }}
+                  >
+                    {label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  return (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.code}
+                    >
+                      {columns.map(({ id, align, label, minWidth, format }) => {
+                        const value = row[id];
+                        return (
+                          <TableCell key={id} align={align}>
+                            {format && typeof value === "number"
+                              ? format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {/* <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
         count={rows.length}
@@ -229,6 +272,7 @@ export const Breakdown = () => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       /> */}
-    </Paper>
+      </Paper>
+    </Stack>
   );
 };

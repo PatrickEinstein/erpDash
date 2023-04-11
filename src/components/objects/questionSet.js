@@ -84,7 +84,7 @@ export const Categories = () => {
           <Typography
             variant="h5"
             sx={{
-              fontSize: "15px",
+              fontSize: "25px",
             }}
             color={shades.neutral[900]}
           >
@@ -96,9 +96,11 @@ export const Categories = () => {
           variant="h4"
           sx={{
             fontSize: "15px",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            fontweight : "bold"
           }}
-          color={theme.palette.primary.main}
+          color= "blue"
+          fontWeight={"bold"}
           // color={shades.primary[900]}
         >
           {H}

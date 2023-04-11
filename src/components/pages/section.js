@@ -34,7 +34,7 @@ export const averageSum = (sum) => sum / 5;
 
 export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const theme = useTheme();
   const [value1, setValue1] = React.useState("");
   const [value2, setValue2] = React.useState("");
@@ -115,10 +115,9 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
       case 15:
         return dispatch(setCat14(averagesum));
         break;
-        case 16:
-          return dispatch(setCat15(averagesum)),
-          navigate("/success")
-          break;
+      case 16:
+        return dispatch(setCat15(averagesum)), navigate("/success");
+        break;
     }
   };
 
@@ -137,70 +136,73 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
       spacing={10}
       backgroundColor="white"
       justifyContent="space-between"
-        alignItems="center"
+      alignItems="center"
       sx={{
-        height:"auto",
-        borderRadius:10
+        height: "auto",
+        borderRadius: 10,
       }}
     >
       <ol>
-      
-          <li>
-            {" "}
-            <Typography
-              variant="h4"
-              sx={{
-                fontSize: "15px",
-                fontWeight:"bold"
-              }}
-              color={theme.palette.primary.main}
-            >{Q1}</Typography>{" "}
-          </li>
-
-          <FormControl>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              name="radio-buttons-group"
-              value={value1}
-              onChange={handleChange1}
-            >
-              <FormControlLabel
-                value={5}
-                control={<Radio />}
-                label="Very high"
-                sx={{
-              fontSize:5
-                }}
-              />
-              <FormControlLabel value={4} control={<Radio />} label="High" />
-              <FormControlLabel
-                value={3}
-                control={<Radio />}
-                label="Indifferent"
-              />
-              <FormControlLabel value={2} control={<Radio />} label="Low" />
-              <FormControlLabel
-                value={1}
-                control={<Radio />}
-                label="Very Low"
-              />
-            </RadioGroup>
-          </FormControl>
-          <Divider/>
-       
         <li>
           {" "}
           <Typography
-              variant="h4"
-              sx={{
-                fontSize: "15px",
-                fontWeight:"bold"
-              }}
-              color={theme.palette.primary.main}
-            >{Q2}</Typography>
+            variant="h4"
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+            color={theme.palette.primary.main}
+          >
+            {Q1}
+          </Typography>{" "}
         </li>
 
-        <FormControl>
+        <FormControl
+          sx={{
+            marginBottom: 10,
+          }}
+        >
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="radio-buttons-group"
+            value={value1}
+            onChange={handleChange1}
+          >
+            <FormControlLabel
+              value={5}
+              control={<Radio />}
+              label="Very high"
+              sx={{
+                fontSize: 5,
+              }}
+            />
+            <FormControlLabel value={4} control={<Radio />} label="High" />
+            <FormControlLabel value={3} control={<Radio />} label="Average" />
+            <FormControlLabel value={2} control={<Radio />} label="Low" />
+            <FormControlLabel value={1} control={<Radio />} label="Very Low" />
+          </RadioGroup>
+        </FormControl>
+        <Divider />
+
+        <li>
+          {" "}
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+            color={theme.palette.primary.main}
+          >
+            {Q2}
+          </Typography>
+        </li>
+
+        <FormControl
+          sx={{
+            marginBottom: 10,
+          }}
+        >
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             name="radio-buttons-group"
@@ -209,28 +211,30 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
           >
             <FormControlLabel value={5} control={<Radio />} label="Very high" />
             <FormControlLabel value={4} control={<Radio />} label="High" />
-            <FormControlLabel
-              value={3}
-              control={<Radio />}
-              label="Indifferent"
-            />
+            <FormControlLabel value={3} control={<Radio />} label="Average" />
             <FormControlLabel value={2} control={<Radio />} label="Low" />
             <FormControlLabel value={1} control={<Radio />} label="Very Low" />
           </RadioGroup>
         </FormControl>
-        <Divider/>
+        <Divider />
         <li>
           {" "}
           <Typography
-              variant="h4"
-              sx={{
-                fontSize: "15px",
-                fontWeight:"bold"
-              }}
-              color={theme.palette.primary.main}
-            >{Q3}</Typography>
+            variant="h4"
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+            color={theme.palette.primary.main}
+          >
+            {Q3}
+          </Typography>
         </li>
-        <FormControl>
+        <FormControl
+          sx={{
+            marginBottom: 10,
+          }}
+        >
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             name="radio-buttons-group"
@@ -239,28 +243,31 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
           >
             <FormControlLabel value={5} control={<Radio />} label="Very high" />
             <FormControlLabel value={4} control={<Radio />} label="High" />
-            <FormControlLabel
-              value={3}
-              control={<Radio />}
-              label="Indifferent"
-            />
+            <FormControlLabel value={3} control={<Radio />} label="Average" />
             <FormControlLabel value={2} control={<Radio />} label="Low" />
             <FormControlLabel value={1} control={<Radio />} label="Very Low" />
           </RadioGroup>
         </FormControl>
-        <Divider/>
+        <Divider />
         <li>
           {" "}
           <Typography
-              variant="h4"
-              sx={{
-                fontSize: "15px",
-                fontWeight:"bold"
-              }}
-              color={theme.palette.primary.main}
-            > {Q4}</Typography>
+            variant="h4"
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+            color={theme.palette.primary.main}
+          >
+            {" "}
+            {Q4}
+          </Typography>
         </li>
-        <FormControl>
+        <FormControl
+          sx={{
+            marginBottom: 10,
+          }}
+        >
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             name="radio-buttons-group"
@@ -269,26 +276,24 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
           >
             <FormControlLabel value={5} control={<Radio />} label="Very high" />
             <FormControlLabel value={4} control={<Radio />} label="High" />
-            <FormControlLabel
-              value={3}
-              control={<Radio />}
-              label="Indifferent"
-            />
+            <FormControlLabel value={3} control={<Radio />} label="Average" />
             <FormControlLabel value={2} control={<Radio />} label="Low" />
             <FormControlLabel value={1} control={<Radio />} label="Very Low" />
           </RadioGroup>
         </FormControl>
-        <Divider/>
+        <Divider />
         <li>
           {" "}
           <Typography
-              variant="h4"
-              sx={{
-                fontSize: "15px",
-                fontWeight:"bold"
-              }}
-              color={theme.palette.primary.main}
-            >{Q5}</Typography>
+            variant="h4"
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+            color={theme.palette.primary.main}
+          >
+            {Q5}
+          </Typography>
         </li>
         <FormControl>
           <RadioGroup
@@ -299,16 +304,12 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
           >
             <FormControlLabel value={5} control={<Radio />} label="Very high" />
             <FormControlLabel value={4} control={<Radio />} label="High" />
-            <FormControlLabel
-              value={3}
-              control={<Radio />}
-              label="Indifferent"
-            />
+            <FormControlLabel value={3} control={<Radio />} label="Average" />
             <FormControlLabel value={2} control={<Radio />} label="Low" />
             <FormControlLabel value={1} control={<Radio />} label="Very Low" />
           </RadioGroup>
         </FormControl>
-        <Divider/>
+        <Divider />
       </ol>
     </Stack>
   );

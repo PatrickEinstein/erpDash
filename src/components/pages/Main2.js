@@ -43,14 +43,14 @@ export const Main2 = () => {
             pt: 2,
           }}
         >
-          <AvatarGroup>
+          {/* <AvatarGroup>
             <Avatar alt="Remy Sharp" src={faker.image.avatar()} />
             <Avatar alt="Travis Howard" src={faker.image.avatar()} />
             <Avatar alt="Cindy Baker" src={faker.image.avatar()} />
             <Avatar alt="Agnes Walker" src={faker.image.avatar()} />
             <Avatar alt="Trevor Henderson" src={faker.image.avatar()} />
-          </AvatarGroup>
-          <Stack>
+          </AvatarGroup> */}
+          {/* <Stack>
             <Typography
               color={shades.neutral[100]}
               sx={{
@@ -64,7 +64,7 @@ export const Main2 = () => {
               color={shades.neutral[100]}
               // variant="subtitle"
             >Previews</Typography>
-          </Stack>
+          </Stack> */}
         </Stack>
         <Typography
          color={shades.neutral[100]}
@@ -77,9 +77,9 @@ export const Main2 = () => {
             fontSize: "30px",
           }}
         >
-          Welcome User
+          Welcome To Export Readiness Assesment
         </Typography>
-        <Box
+        {/* <Box
           sx={{
             height: 250,
             width: 150,
@@ -92,7 +92,7 @@ export const Main2 = () => {
             src={faker.image.avatar()}
             sx={{ width: 150, height: 150 }}
           />
-        </Box>
+        </Box> */}
         <Typography
           variant="h5"
           align="center"
@@ -105,8 +105,9 @@ export const Main2 = () => {
             fontSize: "20px",
           }}
         >
-          Can We Meet You ?
+          Kindly fill in your details
         </Typography>
+        
       </Stack>
       <Stack justifyContent="center" alignItems="center" spacing={2}>
         {/* FORM */}

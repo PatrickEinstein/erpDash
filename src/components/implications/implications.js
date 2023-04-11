@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { RecommendationsImplication } from "../recommendations/recommendationImplicationLogic";
+import { AveragePercentageLogic, RecommendationsImplication } from "../recommendations/recommendationImplicationLogic";
 
 export const Implications1 = () => {
   const isresult = useSelector((state) => state.result);
@@ -234,7 +234,7 @@ export const ImplicationsAveragePercentage = () => {
   const isresult = useSelector((state) => state.result);
   const istotalAveragePercentage = isresult.totalAveragePercentage;
   return (
-    <RecommendationsImplication
+    <AveragePercentageLogic
       cat={istotalAveragePercentage}
       r1="Getting ready to start the journey to exportation-  focus on overcoming the teething problem of business setup"
       r2="Just starting the journey to export business -needs to concentrate local business development and less on export readiness  "
