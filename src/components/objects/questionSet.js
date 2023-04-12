@@ -60,10 +60,7 @@ export const Categories = () => {
         total={150}
         numOfLinks={isNonMediaScreens ? 10 : 2}
         hideFirstLast
-        
       />
-
-
       <Box
         sx={{}}
         // backgroundColor="powderblue"
@@ -77,9 +74,7 @@ export const Categories = () => {
             marginBottom: "20px",
             ml: "40%",
             height: 30,
-            borderRadius:10
           }}
-          
         >
           <Typography
             variant="h5"
@@ -97,9 +92,9 @@ export const Categories = () => {
           sx={{
             fontSize: "15px",
             marginBottom: "20px",
-            fontweight : "bold"
+            fontweight: "bold",
           }}
-          color= "blue"
+          color="blue"
           fontWeight={"bold"}
           // color={shades.primary[900]}
         >
@@ -107,7 +102,12 @@ export const Categories = () => {
         </Typography>
         <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
 
-        <Stack direction="row" justifyContent="center" alignItems="center" spacing={10}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={10}
+        >
           {count < 1 ? (
             <Button
               variant="contained"
@@ -170,7 +170,7 @@ export const Categories = () => {
                   }}
                   color={theme.palette.primary.main}
                 >
-                Next
+                  Next
                 </Typography>
               </Button>
             </IconButton>
@@ -199,7 +199,6 @@ export const Categories = () => {
           )}
         </Stack>
       </Box>
-      
     </Stack>
   );
 };

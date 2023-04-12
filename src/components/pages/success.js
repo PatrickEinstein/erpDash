@@ -45,8 +45,6 @@ export const Success = () => {
   const istotalAveragePercentage = isresult.totalAveragePercentage;
   const userInfo = isresult.user;
 
- 
-
   const totalResults = [
     +cat1,
     +cat2,
@@ -71,7 +69,6 @@ export const Success = () => {
 
   const totalAveragePercentage = (TotalResult / 75) * 100;
 
-
   try {
     dispatch(setTotalResult(TotalResult));
     dispatch(setTotalAveragePercentage(totalAveragePercentage));
@@ -87,17 +84,17 @@ export const Success = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            data : isresult
+            data: isresult,
           }),
         }
       ).then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }
-  
+
     setOpen(false);
 
-   navigate("/summary");
+    navigate("/summary");
   };
 
   return (
@@ -110,31 +107,48 @@ export const Success = () => {
           aria-describedby="alert-dialog-description"
           //   fullScreen={fullScreen}
         >
-          <DialogTitle id="alert-dialog-title" fontSize={20}>
+          <DialogTitle id="alert-dialog-title" fontSize={20} align="center">
             {"Your Export Readiness Assesment "}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-             
               <Typography
                 sx={{
                   fontWeight: "bold",
                   fontSize: "20px",
+                  mb: 3,
                 }}
+                align="center"
               >
-               Dear, {userInfo.firstName} {userInfo.lastName}
+                Dear, {userInfo.firstName} {userInfo.lastName}
               </Typography>
-                <span> kindly check </span>
               <Typography
                 sx={{
                   fontWeight: "bold",
-                  fontSize: "20px",
+                  fontSize: "15px",
+                  mb: 3,
                 }}
               >
-              {userInfo.email}
+                Your Export Readiness Score is{" "}
+                {istotalAveragePercentage.toFixed(2)}%
+              </Typography>
+              <span> kindly check </span>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                  mb: 3,
+                }}
+                variant="body"
+              >
+                {userInfo.email}
               </Typography>{" "}
-              <Typography>
-               the complete breakdown, implications and suggestions of scores
+              <Typography
+              sx={{
+                mt : 3
+              }}
+              >
+                the complete breakdown, implications and suggestions of scores
               </Typography>
             </DialogContentText>
           </DialogContent>

@@ -63,7 +63,9 @@ export const Forms = () => {
         {/* 1 */}
         <UsersThree size={100} />
         {/* w */}
-        <Stack spacing={3}>
+        <Stack spacing={3}
+        position="relative"
+        >
           <Box sx={{ width: "100%" }}>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
               <Box gridColumn="span 12">
@@ -167,16 +169,21 @@ export const Forms = () => {
             color="info"
             style={{
               backgroundColor: "white",
-              width: "40%",
-              ml: "40%",
+              width: "50%",
+              height : 40,
+              position : "absolute",
+              bottom : -60,
+              right : "30%"
             }}
             onClick={handleSubmit}
           >
             <Typography
-              color={shades.primary[900]}
+              // color={shades.primary[900]}
+              color ="InfoText"
               variant="h3"
               sx={{
-                fontSize: "8px",
+                fontSize: "12px",
+               
               }}
             >
               Enroll now

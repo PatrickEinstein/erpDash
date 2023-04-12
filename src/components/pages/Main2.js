@@ -77,7 +77,7 @@ export const Main2 = () => {
             fontSize: "30px",
           }}
         >
-          Welcome To Export Readiness Assesment
+          Welcome To Export Readiness Assesment Test
         </Typography>
         {/* <Box
           sx={{
