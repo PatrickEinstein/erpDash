@@ -115,7 +115,7 @@ export const Breakdown = () => {
   const cat13 = isresult.cat13;
   const cat14 = isresult.cat14;
   const cat15 = isresult.cat15;
-  const istotalAveragePercentage = isresult.totalAveragePercentage;
+  const istotalAveragePercentage =isresult.totalAveragePercentage
   const userInfo = isresult.user;
 
   const rows = [
@@ -137,7 +137,7 @@ export const Breakdown = () => {
     ,
     createData(
       "Total Score",
-      istotalAveragePercentage.toFixed(2) + "%",
+      <Typography sx={{fontWeight:"bold"}}> {istotalAveragePercentage.toFixed(2) +"%"} </Typography> ,
       <ImplicationsAveragePercentage />,
       <RecommendsAveragePercentage />
     ),
@@ -162,6 +162,7 @@ export const Breakdown = () => {
           sx={{
             fontSize: "25px",
             fontWeight: "bold",
+            mb: 300,
           }}
         >
           {" "}

@@ -180,13 +180,13 @@ export const Forms = () => {
             <Typography
               // color={shades.primary[900]}
               color ="InfoText"
-              variant="h3"
+              variant="h5"
               sx={{
                 fontSize: "12px",
                
               }}
             >
-              Enroll now
+              Start Test
             </Typography>
           </Button>
         </Stack>
