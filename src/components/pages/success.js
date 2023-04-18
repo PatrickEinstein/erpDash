@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import {
   setTotalResult,
   setTotalAveragePercentage,
@@ -22,7 +22,8 @@ import { Breakdown } from "./breakdown";
 export const Success = () => {
   const theme = useTheme();
   //   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -77,9 +78,10 @@ export const Success = () => {
   }
 
   const handleClose = async () => {
+    setDisabled(true);
     try {
       const savedUserResponse = await fetch(
-        "http://localhost:5001/create-pdf",
+        "https://nodejs-production-f19e.up.railway.app/create-pdf",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -144,9 +146,9 @@ export const Success = () => {
                 {userInfo.email}
               </Typography>{" "}
               <Typography
-              sx={{
-                mt : 3
-              }}
+                sx={{
+                  mt: 3,
+                }}
               >
                 the complete breakdown, implications and suggestions of scores
               </Typography>
@@ -161,6 +163,7 @@ export const Success = () => {
               mb: "2%",
             }}
             variant="contained"
+            disabled={disabled}
           >
             Finish
           </Button>

@@ -246,7 +246,7 @@ export const Breakdown = () => {
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.code}
+                      key={row.name}
                     >
                       {columns.map(({ id, align, label, minWidth, format }) => {
                         const value = row[id];
