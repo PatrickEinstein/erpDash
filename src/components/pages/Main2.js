@@ -1,118 +1,116 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Stack,
-  Typography,
-  Zoom,
-} from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-// import { useTheme } from "@mui/material/styles";
+
 import { useTheme } from "@mui/material";
-import { shades } from "../../theme";
-import Avatar from "@mui/material/Avatar";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import { faker } from "@faker-js/faker";
-import { GoogleLogo, SlackLogo, StripeLogo, UserCircle } from "phosphor-react";
+
 import { useMediaQuery } from "@mui/material";
 import { Forms } from "../objects/form";
 
 export const Main2 = () => {
-  // const theme = useTheme();
   const {
     palette: { neutral },
   } = useTheme();
-  const isNonMobileScreen = useMediaQuery("(min-width:900px)");
+  const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
 
   return (
     <Stack
-      spacing={5}
-      backgroundColor="powderblue"
       sx={{
         height: 1000,
-      }}
-    >
-      <Stack justifyContent="center" alignItems="center" spacing={2}>
-        <Stack
-          direction={"row"}
-          justifyContent="center"
-          alignItems="center"
-          spacing={2}
-          sx={{
-            height: "100%",
-            pt: 2,
-          }}
-        >
-          {/* <AvatarGroup>
-            <Avatar alt="Remy Sharp" src={faker.image.avatar()} />
-            <Avatar alt="Travis Howard" src={faker.image.avatar()} />
-            <Avatar alt="Cindy Baker" src={faker.image.avatar()} />
-            <Avatar alt="Agnes Walker" src={faker.image.avatar()} />
-            <Avatar alt="Trevor Henderson" src={faker.image.avatar()} />
-          </AvatarGroup> */}
-          {/* <Stack>
-            <Typography
-              color={shades.neutral[100]}
-              sx={{
-                fontWeight: "bold",
-                fontSize: 15,
-              }}
-            >
-              255k+
-            </Typography>
-            <Typography
-              color={shades.neutral[100]}
-              // variant="subtitle"
-            >Previews</Typography>
-          </Stack> */}
-        </Stack>
-        <Typography
-         color={shades.neutral[100]}
-          variant="h3"
-          align="center"
-          sx={{
-            pr: 4,
-            pl: 4,
-            fontWeight: "bold",
-            fontSize: "30px",
-          }}
-        >
-          Welcome To Export Readiness Assesment Test
-        </Typography>
-        {/* <Box
-          sx={{
-            height: 250,
-            width: 150,
-            borderRadius: "50%",
-          }}
-          backgroundColor="white"
-        >
-          <Avatar
-            alt="Remy Sharp"
-            src={faker.image.avatar()}
-            sx={{ width: 150, height: 150 }}
-          />
-        </Box> */}
-        <Typography
-          variant="h5"
-          align="center"
-          color={shades.neutral[100]}
-          sx={{
-            pt: 2,
-            pr: 4,
-            pl: 4,
-            fontWeight: "bold",
-            fontSize: "20px",
-          }}
-        >
-          Kindly fill in your details
-        </Typography>
         
-      </Stack>
-      <Stack justifyContent="center" alignItems="center" spacing={2}>
-        {/* FORM */}
-        <Forms />
-      </Stack>
+      }}
+      p={isNonMobileScreen ? 0 : "5"}
+      height={isNonMobileScreen? 1000 : "auto"}
+      direction="row"
+      alignItem={isNonMobileScreen  ? "" : "center"}
+      justifyContent={isNonMobileScreen? "space-around" : "space-around"}
+    >
+      <Box
+        sx={{
+          height: "100%",
+          width: "40%",
+        }}
+        display={isNonMobileScreen ? "block" : "none"}
+      >
+        <img
+          src="https://i.ibb.co/KwBQqBX/shipexp.jpg"
+          alt="shipexp"
+          border="0"
+          sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            // objectPosition: "center",
+          }}
+        />
+      </Box>
+      <Box
+        sx={{
+          height: "100%",
+         
+        }}
+        margin={isNonMobileScreen ? "auto" : "5"} 
+        pl={isNonMobileScreen ? 10 : 10}
+      
+        width={isNonMobileScreen ? "40%" : "auto"}
+      >
+        <Stack
+          sx={
+            isNonMobileScreen
+              ? {}
+              : {
+                  backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
+                  filter: "brightness(100%)",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  minHeight: "100vh",
+                  height: "110%",
+                  p: 3,
+                
+                }
+          }
+          // backgroundImage={isNonMobileScreen ? "url(https://i.ibb.co/2dy1dGW/cargo.jpg)" : "none"}
+        >
+          <Typography
+            color={isNonMobileScreen ? "blue" : "white"}
+            variant="h3"
+            align={isNonMobileScreen ? "center " : "left"}
+            sx={{
+              fontWeight: "bold",
+              marginBottom: 5,
+            }}
+            pr={isNonMobileScreen ? 4 : "auto"}
+            pl={isNonMobileScreen ? 4 : "auto"}
+            fontSize={isNonMobileScreen ? "30px" : "40px"}
+          >
+            Welcome To Export Readiness Assessment Test
+          </Typography>
+          <Typography
+            fontWeight={isNonMobileScreen ? "" : "bold"}
+            color={isNonMobileScreen ? "blue" : "white"}
+            align={isNonMobileScreen ? "center " : "left"}
+            sx={{
+              marginBottom: 10,
+            }}
+          >
+            This 15 sections in this assessment will show you the 15 ALARMING
+            REASONS WHY YOUR EXPORT BUSINESS MIGHT FAIL.
+          </Typography>
+          <Typography
+            fontWeight={isNonMobileScreen ? "" : "bold"}
+            color={isNonMobileScreen ? "blue" : "white"}
+            align={isNonMobileScreen ? "center " : "left"}
+            sx={{
+              marginBottom: 10,
+            }}
+          >
+            Upon completion, you will get a report that will show you the areas
+            of improvement you need to work on in your business before you start
+            a sustainable and successful export business
+          </Typography>
+          <Forms />
+        </Stack>
+      </Box>
     </Stack>
   );
 };

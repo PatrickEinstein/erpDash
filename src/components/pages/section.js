@@ -133,12 +133,13 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
 
   return (
     <Stack
-      spacing={10}
+      spacing={5}
       backgroundColor="white"
       justifyContent="space-between"
       alignItems="center"
       sx={{
         height: "auto",
+        opacity:0.8
       }}
     >
       <ol>

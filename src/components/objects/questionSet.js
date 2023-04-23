@@ -12,6 +12,7 @@ import { Success } from "../pages/success";
 import { shades } from "../../theme";
 // import { useTheme } from "@mui/material/styles";
 import { useTheme } from "@mui/material";
+import { Opacity } from "@material-ui/icons";
 export const Categories = () => {
   const {
     palette: { neutral },
@@ -44,28 +45,38 @@ export const Categories = () => {
 
   return (
     <Stack
-      spacing={5}
+      spacing={3}
       backgroundColor="aqua"
       justifyContent="space-between"
       alignItems="center"
       sx={{
+        backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
         height: "auto",
         p: 3,
       }}
     >
-      {" "}
-      <Pagination
-        page={count + 1}
-        setPage={handleChange}
-        total={150}
-        numOfLinks={isNonMediaScreens ? 10 : 2}
-        hideFirstLast
-      />
-      <Box
-        sx={{}}
-        // backgroundColor="powderblue"
-        width={isNonMediaScreens ? 700 : "auto"}
+      <Stack
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{
+          backgroundColor: "white",
+          height: "auto",
+          opacity: 0.8,
+          margin:"auto",
+        }}
       >
+        {" "}
+        <Pagination
+          page={count + 1}
+          setPage={handleChange}
+          total={150}
+          numOfLinks={isNonMediaScreens ? 10 : 2}
+          hideFirstLast
+        />
         <Button
           variant="contained"
           color="info"
@@ -86,22 +97,20 @@ export const Categories = () => {
             {`category ${C}`}
           </Typography>
         </Button>
-
         <Typography
           variant="h4"
           sx={{
-            fontSize: "15px",
             marginBottom: "20px",
             fontweight: "bold",
           }}
-          color="blue"
+          color="white"
           fontWeight={"bold"}
-          // color={shades.primary[900]}
+          align="center"
+          fontSize={isNonMediaScreens ? "30px" : "20px"}
         >
           {H}
         </Typography>
         <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
-
         <Stack
           direction="row"
           justifyContent="center"
@@ -158,7 +167,7 @@ export const Categories = () => {
                 variant="contained"
                 color="info"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "red",
                   height: 25,
                   ml: "40%",
                 }}
@@ -167,8 +176,9 @@ export const Categories = () => {
                   variant="subtitle2"
                   sx={{
                     fontSize: "10px",
+                    color: "white",
                   }}
-                  color={theme.palette.primary.main}
+                  // color={theme.palette.primary.main}
                 >
                   Next
                 </Typography>
@@ -180,7 +190,7 @@ export const Categories = () => {
                 variant="contained"
                 color="info"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "red",
                   height: 25,
                   ml: "40%",
                 }}
@@ -189,8 +199,8 @@ export const Categories = () => {
                   variant="subtitle2"
                   sx={{
                     fontSize: "10px",
+                    color: "white",
                   }}
-                  color={theme.palette.primary.main}
                 >
                   Submit
                 </Typography>
@@ -198,7 +208,7 @@ export const Categories = () => {
             </IconButton>
           )}
         </Stack>
-      </Box>
+      </Stack>
     </Stack>
   );
 };

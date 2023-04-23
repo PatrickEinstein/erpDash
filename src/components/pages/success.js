@@ -79,19 +79,41 @@ export const Success = () => {
 
   const handleClose = async () => {
     setDisabled(true);
+
     try {
-      const savedUserResponse = await fetch(
-        "https://web-production-0ff78.up.railway.app/create-pdf",
+      const headers = {
+        "Content-Type": "application/json",
+        // Authorization: "Bearer my-token",
+      };
+      // const data = {
+      //   data: isresult,
+      // };
 
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+      axios
+        .post(
+          "https://nodejs-production-f19e.up.railway.app/create-pdf",
+          isresult,
+          { headers }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      // const savedUserResponse = await fetch(
+      //   "https://nodejs-production-f19e.up.railway.app/create-pdf",
+      //   // "http://localhost:5001/create-pdf",
 
-          body: JSON.stringify({
-            data: isresult,
-          }),
-        }
-      ).then((res) => console.log(res));
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+
+      //     body: JSON.stringify({
+      //       data: isresult,
+      //     }),
+      //   }
+      // ).then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }
@@ -102,7 +124,17 @@ export const Success = () => {
   };
 
   return (
-    <Stack>
+    <Stack
+    sx={{
+      backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      minHeight: "100vh",
+      height: "auto",
+      p: 3,
+    }}
+    >
       {open ? (
         <Dialog
           open={open}
@@ -111,7 +143,7 @@ export const Success = () => {
           aria-describedby="alert-dialog-description"
           //   fullScreen={fullScreen}
         >
-          <DialogTitle id="alert-dialog-title" fontSize={20} align="center">
+          <DialogTitle id="alert-dialog-title" fontSize={20} align="center" color="blue" fontWeight="bold">
             {"Your Export Readiness Assesment "}
           </DialogTitle>
           <DialogContent>
@@ -132,11 +164,12 @@ export const Success = () => {
                   fontSize: "15px",
                   mb: 3,
                 }}
+                align="center"
               >
                 Your Export Readiness Score is{" "}
                 {istotalAveragePercentage.toFixed(2)}%
               </Typography>
-              <span> kindly check </span>
+              <span > kindly check </span>
               <Typography
                 sx={{
                   fontWeight: "bold",
@@ -144,6 +177,7 @@ export const Success = () => {
                   mb: 3,
                 }}
                 variant="body"
+               
               >
                 {userInfo.email}
               </Typography>{" "}
@@ -151,6 +185,7 @@ export const Success = () => {
                 sx={{
                   mt: 3,
                 }}
+                align="center"
               >
                 the complete breakdown, implications and suggestions of scores
               </Typography>
@@ -163,9 +198,11 @@ export const Success = () => {
               width: "20%",
               ml: "40%",
               mb: "2%",
+              backgroundColor:"red"
             }}
             variant="contained"
             disabled={disabled}
+            
           >
             Finish
           </Button>

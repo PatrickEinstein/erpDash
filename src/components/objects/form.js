@@ -11,7 +11,10 @@ import { shades } from "../../theme";
 import { setUser } from "../../redux/result_reducer";
 import { useDispatch } from "react-redux";
 import { UserCircle, Users, UsersThree } from "phosphor-react";
-import { SupervisedUserCircleRounded, VerifiedUserRounded } from "@material-ui/icons";
+import {
+  SupervisedUserCircleRounded,
+  VerifiedUserRounded,
+} from "@material-ui/icons";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -34,7 +37,14 @@ export const Forms = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = () => {
-    if (!firstName || !lastName || !lastName) {
+    if (
+      !firstName ||
+      !lastName ||
+      !lastName ||
+      !phone ||
+      !Products ||
+      !companyName
+    ) {
       alert(" Kindly Tell me about you");
     } else {
       dispatch(
@@ -50,24 +60,13 @@ export const Forms = () => {
     palette: { neutral },
   } = useTheme();
   return (
-    <Box>
-      <Stack
-        spacing={2}
-        justifyContent="space-between"
-        alignItems={"center"}
-        sx={{
-          width: "auto",
-          padding: 2,
-        }}
-      >
-        {/* 1 */}
-        <UsersThree size={100} />
-        {/* w */}
-        <Stack spacing={3}
-        position="relative"
-        >
-          <Box sx={{ width: "100%" }}>
-            <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+ 
+       
+        <Stack spacing={3} position="relative">
+         
+            <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={5} sx={{
+              
+            }}>
               <Box gridColumn="span 12">
                 <TextField
                   label="Firstname"
@@ -80,10 +79,12 @@ export const Forms = () => {
                   sx={{
                     backgroundColor: "white",
                   }}
+                  required
                 />
               </Box>
               <Box gridColumn="span 12">
                 <TextField
+                  required
                   label="Lastname"
                   type="text"
                   id="outlined-size-small"
@@ -98,6 +99,7 @@ export const Forms = () => {
               </Box>
               <Box gridColumn="span 12">
                 <TextField
+                  required
                   label="Phone"
                   type="number"
                   id="outlined-size-small"
@@ -124,6 +126,7 @@ export const Forms = () => {
                   size="small"
                   fullWidth
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                   sx={{
                     backgroundColor: "white",
@@ -144,6 +147,7 @@ export const Forms = () => {
                   }}
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
+                  required
                 />
               </Box>
               <Box gridColumn="span 12">
@@ -160,37 +164,36 @@ export const Forms = () => {
                   }}
                   value={Products}
                   onChange={(e) => setProducts(e.target.value)}
+                  required
                 />
               </Box>
             </Box>
-          </Box>
+     
           <Button
             variant="contained"
             color="info"
             style={{
               backgroundColor: "white",
               width: "50%",
-              height : 40,
-              position : "absolute",
-              bottom : -60,
-              right : "30%"
+              height: 40,
+              position: "absolute",
+              bottom: -60,
+              right: "30%",
             }}
             onClick={handleSubmit}
           >
             <Typography
               // color={shades.primary[900]}
-              color ="InfoText"
+              color="InfoText"
               variant="h5"
               sx={{
                 fontSize: "12px",
-               
               }}
             >
               Start Test
             </Typography>
           </Button>
         </Stack>
-      </Stack>
-    </Box>
+   
   );
 };
