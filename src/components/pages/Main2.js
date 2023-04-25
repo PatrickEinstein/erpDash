@@ -27,12 +27,12 @@ export const Main2 = () => {
       <Box
         sx={{
           height: "100%",
-          width: "40%",
+          width: "50%",
         }}
         display={isNonMobileScreen ? "block" : "none"}
       >
         <img
-          src="https://i.ibb.co/KwBQqBX/shipexp.jpg"
+          src={process.env.PUBLIC_URL + "/shipexp.jpeg"}
           alt="shipexp"
           border="0"
           sx={{
@@ -49,7 +49,7 @@ export const Main2 = () => {
          
         }}
         margin={isNonMobileScreen ? "auto" : "5"} 
-        pl={isNonMobileScreen ? 10 : 10}
+        // pl={isNonMobileScreen ? 10 : 10}
       
         width={isNonMobileScreen ? "40%" : "auto"}
       >
