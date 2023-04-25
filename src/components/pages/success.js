@@ -175,14 +175,15 @@ export const Success = () => {
                 Your Export Readiness Score is{" "}
                 {istotalAveragePercentage.toFixed(2)}%
               </Typography>
-              <span> kindly check </span>
+              <Typography align="center"> kindly check </Typography>
               <Typography
                 sx={{
                   fontWeight: "bold",
                   fontSize: "15px",
                   mb: 3,
                 }}
-                variant="body"
+               
+                align="center"
               >
                 {userInfo.email}
               </Typography>{" "}
@@ -192,7 +193,7 @@ export const Success = () => {
                 }}
                 align="center"
               >
-                the complete breakdown, implications and suggestions of scores
+               for   the complete breakdown, implications and suggestions of scores
               </Typography>
             </DialogContentText>
           </DialogContent>

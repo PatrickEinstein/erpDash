@@ -164,6 +164,8 @@ export const Breakdown = () => {
         height={15}
         sx={{
           padding: 3,
+          height:"auto",
+          width: "auto",
         }}
       >
         <Typography
@@ -172,7 +174,8 @@ export const Breakdown = () => {
           sx={{
             fontSize: "25px",
             fontWeight: "bold",
-            mb: 300,
+            mb: "auto",
+           height:"auto"
           }}
         >
           {" "}
@@ -192,7 +195,7 @@ export const Breakdown = () => {
                     }}
                   >
                     <img
-                      src="https://i.ibb.co/9t5b7BH/editpage.jpgx150x150"
+                      src={process.env.PUBLIC_URL + "/explogo.jpeg"}
                       style={{
                         width: 80,
                         height: 80,
