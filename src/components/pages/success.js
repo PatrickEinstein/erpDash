@@ -81,39 +81,39 @@ export const Success = () => {
     setDisabled(true);
 
     try {
-      const headers = {
-        "Content-Type": "application/json",
-        // Authorization: "Bearer my-token",
-      };
+      // const headers = {
+      //   "Content-Type": "application/json",
+      //   // Authorization: "Bearer my-token",
+      // };
       // const data = {
       //   data: isresult,
       // };
 
-      axios
-        .post(
-          "https://nodejs-production-f19e.up.railway.app/create-pdf",
-          isresult,
-          { headers }
-        )
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      // const savedUserResponse = await fetch(
-      //   "https://nodejs-production-f19e.up.railway.app/create-pdf",
-      //   // "http://localhost:5001/create-pdf",
+      // axios
+      //   .post(
+      //     "/create-pdf",
+      //     isresult,
+      //     { headers }
+      //   )
+      //   .then((response) => {
+      //     console.log(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
+      const savedUserResponse = await fetch(
+        //"https://nodejs-production-f19e.up.railway.app/create-pdf",
+         "/create-pdf",
 
-      //   {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
 
-      //     body: JSON.stringify({
-      //       data: isresult,
-      //     }),
-      //   }
-      // ).then((res) => console.log(res));
+          body: JSON.stringify({
+            data: isresult,
+          }),
+        }
+      ).then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }
