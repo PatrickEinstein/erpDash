@@ -153,10 +153,10 @@ export const Breakdown = () => {
       sx={
         !isNonMobileScreen
           ? {
-              margin: 0,
+              margin: 10,
             }
           : {
-              margin: 10,
+              margin: 0,
             }
       }
     >

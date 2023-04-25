@@ -66,7 +66,7 @@ export const Categories = () => {
           backgroundColor: "white",
           height: "auto",
           opacity: 0.8,
-          margin:"auto",
+          margin: "auto",
         }}
       >
         {" "}
@@ -97,19 +97,23 @@ export const Categories = () => {
             {`category ${C}`}
           </Typography>
         </Button>
-        <Typography
-          variant="h4"
-          sx={{
-            marginBottom: "20px",
-            fontweight: "bold",
-          }}
-          color="maroon"
-          fontWeight={"bold"}
-          align="center"
-          fontSize={isNonMediaScreens ? "30px" : "20px"}
-        >
-          {H}
-        </Typography>
+        <Box sx={{
+          width:"70%"
+        }}>
+          <Typography
+            variant="h4"
+            sx={{
+              marginBottom: "20px",
+              fontweight: "bold",
+            }}
+            color="maroon"
+            fontWeight={"bold"}
+            align="center"
+            fontSize={isNonMediaScreens ? "30px" : "20px"}
+          >
+            {H}
+          </Typography>
+        </Box>
         <Sections Q1={Q1} Q2={Q2} Q3={Q3} Q4={Q4} Q5={Q5} C={C} />
         <Stack
           direction="row"
