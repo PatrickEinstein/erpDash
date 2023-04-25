@@ -125,15 +125,15 @@ export const Success = () => {
 
   return (
     <Stack
-    sx={{
-      backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      minHeight: "100vh",
-      height: "auto",
-      p: 3,
-    }}
+      sx={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/shipexp.jpeg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        height: "auto",
+        p: 3,
+      }}
     >
       {open ? (
         <Dialog
@@ -143,7 +143,13 @@ export const Success = () => {
           aria-describedby="alert-dialog-description"
           //   fullScreen={fullScreen}
         >
-          <DialogTitle id="alert-dialog-title" fontSize={20} align="center" color="blue" fontWeight="bold">
+          <DialogTitle
+            id="alert-dialog-title"
+            fontSize={20}
+            align="center"
+            color="blue"
+            fontWeight="bold"
+          >
             {"Your Export Readiness Assesment "}
           </DialogTitle>
           <DialogContent>
@@ -169,7 +175,7 @@ export const Success = () => {
                 Your Export Readiness Score is{" "}
                 {istotalAveragePercentage.toFixed(2)}%
               </Typography>
-              <span > kindly check </span>
+              <span> kindly check </span>
               <Typography
                 sx={{
                   fontWeight: "bold",
@@ -177,7 +183,6 @@ export const Success = () => {
                   mb: 3,
                 }}
                 variant="body"
-               
               >
                 {userInfo.email}
               </Typography>{" "}
@@ -198,11 +203,10 @@ export const Success = () => {
               width: "20%",
               ml: "40%",
               mb: "2%",
-              backgroundColor:"red"
+              backgroundColor: "red",
             }}
             variant="contained"
             disabled={disabled}
-            
           >
             Finish
           </Button>

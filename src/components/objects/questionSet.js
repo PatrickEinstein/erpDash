@@ -50,7 +50,7 @@ export const Categories = () => {
       justifyContent="space-between"
       alignItems="center"
       sx={{
-        backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
+        backgroundImage: `url(${process.env.PUBLIC_URL}/cargo.jpeg)`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -103,7 +103,7 @@ export const Categories = () => {
             marginBottom: "20px",
             fontweight: "bold",
           }}
-          color="white"
+          color="maroon"
           fontWeight={"bold"}
           align="center"
           fontSize={isNonMediaScreens ? "30px" : "20px"}

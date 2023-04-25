@@ -58,7 +58,7 @@ export const Main2 = () => {
             isNonMobileScreen
               ? {}
               : {
-                  backgroundImage: "url(https://i.ibb.co/2dy1dGW/cargo.jpg)",
+                backgroundImage: `url(${process.env.PUBLIC_URL}/shipexp.jpeg)`,
                   filter: "brightness(100%)",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",

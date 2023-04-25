@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
 import { Grading } from "../recommendations/recommendation";
+import { useMediaQuery } from "@mui/material";
 
 import {
   Recommends1,
@@ -48,7 +49,6 @@ import {
   ImplicationsAveragePercentage,
 } from "../implications/implications";
 import { Box, Stack, Typography } from "@mui/material";
-
 
 const columns = [
   { id: "name", label: "Category", minWidth: 100 },
@@ -89,6 +89,7 @@ function createData(name, code, population, size, density) {
 export const Breakdown = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(18);
+  const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -115,7 +116,7 @@ export const Breakdown = () => {
   const cat13 = isresult.cat13;
   const cat14 = isresult.cat14;
   const cat15 = isresult.cat15;
-  const istotalAveragePercentage =isresult.totalAveragePercentage
+  const istotalAveragePercentage = isresult.totalAveragePercentage;
   const userInfo = isresult.user;
 
   const rows = [
@@ -137,18 +138,27 @@ export const Breakdown = () => {
     ,
     createData(
       "Total Score",
-      <Typography sx={{fontWeight:"bold"}}> {istotalAveragePercentage.toFixed(2) +"%"} </Typography> ,
+      <Typography sx={{ fontWeight: "bold" }}>
+        {" "}
+        {istotalAveragePercentage.toFixed(2) + "%"}{" "}
+      </Typography>,
       <ImplicationsAveragePercentage />,
       <RecommendsAveragePercentage />
     ),
-    createData("Grade","..." ,<Grading/>),
+    createData("Grade", "...", <Grading />),
   ];
 
   return (
     <Stack
-      sx={{
-        margin: 10,
-      }}
+      sx={
+        !isNonMobileScreen
+          ? {
+              margin: 0,
+            }
+          : {
+              margin: 10,
+            }
+      }
     >
       <Box
         height={15}
