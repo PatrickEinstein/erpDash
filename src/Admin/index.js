@@ -21,22 +21,23 @@ function Dashboard(props) {
   return (
     <Stack>
       <SearchAppBar />
-      <Stack justifyContent="space-between" direction="row" >
+      <Stack justifyContent="space-between" direction="row">
         <Box
           sx={{
             width: "30%",
             backgroundColor: "aqua",
-            marginTop:1,
-            padding: 1
+            marginTop: 1,
+            padding: 1,
+            height: 700,
+            overflow: "scroll",
           }}
         >
-            <Foundlist/>
+          <Foundlist />
         </Box>
 
         <Box
           sx={{
             width: "70%",
-            margin: 5
           }}
         >
           <ProfileCards />

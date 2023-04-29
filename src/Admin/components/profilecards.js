@@ -7,8 +7,7 @@ import ProfileCard from "./profilecard";
 import { useSelector } from "react-redux";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
-import PdfViewer from "./FileViewer";
-import {  CaretLeft } from "phosphor-react";
+import { CaretLeft } from "phosphor-react";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -21,10 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ResponsiveGrid() {
   const paramsForSearch = useSelector((state) => state.result.Params.value);
   const userToProfile = useSelector((state) => state.result.selecteduser);
-  const { file, firstName, lastName, email, companyName, products, } =
+  const { file, firstName, lastName, email, companyName, products, phone } =
     userToProfile;
+  //console.log(file)
+ 
 
-const Result = PdfViewer(file, userToProfile) 
+
+  
 
   return (
     <Stack justifyContent="space-around">
@@ -35,7 +37,7 @@ const Result = PdfViewer(file, userToProfile)
             sx={{
               flexGrow: 1,
               marginLeft: "20%",
-              marginTop: 10,
+              marginTop: 1,
             }}
           >
             <Grid
@@ -44,9 +46,17 @@ const Result = PdfViewer(file, userToProfile)
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
               <Grid item xs={2} sm={12} md={8}>
-                <ProfileCard firstName={firstName} lastName={lastName} file={Result} />
+                <ProfileCard
+                  firstName={firstName}
+                  lastName={lastName}
+                  phone={phone}
+                  companyName={companyName}
+                  email={email}
+                  file={file}
+                />
               </Grid>
             </Grid>
+         
           </Box>
         </>
       ) : (

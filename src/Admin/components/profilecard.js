@@ -17,6 +17,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Document } from "react-pdf";
 import { useState } from "react";
 import { faker } from "@faker-js/faker";
+import { Box, Button, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,9 +31,17 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function ProfileCard({file, firstName, lastName, email, companyName, products }) {
+export default function ProfileCard({
+  file,
+  firstName,
+  lastName,
+  email,
+  companyName,
+  Products,
+  phone,
+}) {
   const [expanded, setExpanded] = useState(false);
-
+  const navigate = useNavigate();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -41,9 +51,7 @@ export default function ProfileCard({file, firstName, lastName, email, companyNa
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            <Avatar
-            src={faker.image.avatar()}
-            />
+            Ex
           </Avatar>
         }
         action={
@@ -55,22 +63,26 @@ export default function ProfileCard({file, firstName, lastName, email, companyNa
         Name={companyName}
         subheader="September 14, 2016"
       />
-     
+
       <CardContent>
-        <Typography variant="body2" color="text.secondary" sx={{
-          fontWeight:"bold",
-          fontsize: 20
-        }}>
-       {firstName} {lastName}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            fontWeight: "bold",
+            fontsize: 20,
+          }}
+        >
+          {firstName} {lastName}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
+        </IconButton> */}
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
+        </IconButton> */}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -81,11 +93,77 @@ export default function ProfileCard({file, firstName, lastName, email, companyNa
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-         {firstName} {lastName}
-         <Typography>Everythingn about these nigga is here</Typography>
-         {file}
-        </CardContent>
+        <Stack spacing={"3"}>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              paddingLeft: 2,
+              fontsize: 14,
+            }}
+          >
+            {firstName} {lastName}
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              paddingLeft: 2,
+              fontsize: 14,
+            }}
+          >
+            {companyName}
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              paddingLeft: 2,
+              fontsize: 14,
+            }}
+          >
+            {phone}
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              paddingLeft: 2,
+              fontsize: 14,
+            }}
+          >
+            {Products}
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              paddingLeft: 2,
+              fontsize: 14,
+            }}
+          >
+            {email}
+          </Typography>
+          <Box
+            sx={{
+              backgroundColor: "aqua",
+              height: 300,
+              width: "100%",
+            }}
+          >
+            {/* <PdfViewer2 pdfData={file}/> */}
+          </Box>
+          <Button
+            variant="outlined"
+            sx={{
+              backgroundColor: "blue",
+            }}
+            onClick={() => navigate("/admin/profile")}
+          >
+            <Typography
+              sx={{
+                color: "white",
+              }}
+            >
+              View Full Doc
+            </Typography>
+          </Button>
+        </Stack>
       </Collapse>
     </Card>
   );

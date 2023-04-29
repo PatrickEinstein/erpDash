@@ -58,7 +58,12 @@ export default function Foundlist() {
 
   useEffect(() => {
     try {
-      if (paramsForSearch === undefined || null || "") {
+      if (
+        paramsForSearch === undefined ||
+        paramsForSearch === null ||
+        paramsForSearch === ""
+      ) {
+        // window.location.reload();
         findAllUsers();
       } else {
         findThisUser();
@@ -69,19 +74,43 @@ export default function Foundlist() {
   }, [paramsForSearch]);
 
   return (
-    <Box sx={{ flexGrow: 1, height: 500 }}>
-      <Typography align="center">
-        Total users :{" "}
-        {theUserOrAllUser?.users ? theUserOrAllUser?.users?.length : 0}
+    <Box sx={{ flexGrow: 1,   overflow : "scroll"}}>
+      <Typography align="center"
+      sx={{
+        marginBottom:5
+      }}
+      >
+        
+        {theUserOrAllUser?.users ? `Total users  ${theUserOrAllUser?.users?.length}` : 
+       "Did not find any match"
+        }
       </Typography>
       <Grid container spacing={2}>
         {theUserOrAllUser?.users?.map(
-          ({ i, index, firstName, lastName, file }) => (
+          ({
+            index,
+            firstName,
+            lastName,
+            file,
+            companyName,
+            phone,
+            Products,
+            email,
+          }) => (
             <Grid item xs={12} key={file}>
               <Item
                 onClick={() => {
                   dispatch(
-                    setSelectedUser({ index, firstName, lastName, file })
+                    setSelectedUser({
+                      index,
+                      firstName,
+                      lastName,
+                      file,
+                      companyName,
+                      phone,
+                      Products,
+                      email,
+                    })
                   );
                 }}
               >
