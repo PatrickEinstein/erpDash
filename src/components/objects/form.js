@@ -62,12 +62,16 @@ export const Forms = () => {
   return (
  
        
-        <Stack spacing={3} position="relative">
+        <Stack spacing={3} position="relative"
+        sx={{
          
-            <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={5} sx={{
+        }}
+        >
+         
+            <Box display="grid" gridTemplateColumns="repeat(10, 1fr)" gap={5} sx={{
               
             }}>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   label="Firstname"
                   id="outlined-size-small"
@@ -82,7 +86,7 @@ export const Forms = () => {
                   required
                 />
               </Box>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   required
                   label="Lastname"
@@ -97,7 +101,7 @@ export const Forms = () => {
                   }}
                 />
               </Box>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   required
                   label="Phone"
@@ -118,7 +122,7 @@ export const Forms = () => {
                   }}
                 />
               </Box>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   label="E-mail"
                   type="email"
@@ -133,7 +137,7 @@ export const Forms = () => {
                   }}
                 />
               </Box>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   label="Company name"
                   type="text"
@@ -150,7 +154,7 @@ export const Forms = () => {
                   required
                 />
               </Box>
-              <Box gridColumn="span 12">
+              <Box gridColumn="span 10">
                 <TextField
                   label="Products"
                   type="text"
@@ -187,7 +191,7 @@ export const Forms = () => {
               color="InfoText"
               variant="h5"
               sx={{
-                fontSize: "12px",
+                fontSize: "10px",
               }}
             >
               Start Test

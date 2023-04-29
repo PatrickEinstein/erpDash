@@ -16,13 +16,12 @@ export const Main2 = () => {
     <Stack
       sx={{
         height: 1000,
-        
       }}
       p={isNonMobileScreen ? 0 : "5"}
-      height={isNonMobileScreen? 1000 : "auto"}
+      height={isNonMobileScreen ? 1000 : "auto"}
       direction="row"
-      alignItem={isNonMobileScreen  ? "" : "center"}
-      justifyContent={isNonMobileScreen? "space-around" : "space-around"}
+      alignItem={isNonMobileScreen ? "" : "center"}
+      justifyContent={isNonMobileScreen ? "space-around" : "space-around"}
     >
       <Box
         sx={{
@@ -46,11 +45,8 @@ export const Main2 = () => {
       <Box
         sx={{
           height: "100%",
-         
         }}
-        margin={isNonMobileScreen ? "auto" : "5"} 
-        // pl={isNonMobileScreen ? 10 : 10}
-      
+        margin={isNonMobileScreen ? "auto" : "auto"}
         width={isNonMobileScreen ? "40%" : "auto"}
       >
         <Stack
@@ -58,15 +54,15 @@ export const Main2 = () => {
             isNonMobileScreen
               ? {}
               : {
-                backgroundImage: `url(${process.env.PUBLIC_URL}/shipexp.jpeg)`,
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/shipexp.jpeg)`,
                   filter: "brightness(100%)",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   minHeight: "100vh",
                   height: "110%",
-                  p: 3,
-                
+                  p: 5,
+                  // ml: "5%",
                 }
           }
           // backgroundImage={isNonMobileScreen ? "url(https://i.ibb.co/2dy1dGW/cargo.jpg)" : "none"}
@@ -87,7 +83,7 @@ export const Main2 = () => {
           </Typography>
           <Typography
             fontWeight={isNonMobileScreen ? "" : "bold"}
-            color={isNonMobileScreen ? "blue" : "white"}
+            color={isNonMobileScreen ? "blue" : "maroon"}
             align={isNonMobileScreen ? "center " : "left"}
             sx={{
               marginBottom: 10,
@@ -98,7 +94,7 @@ export const Main2 = () => {
           </Typography>
           <Typography
             fontWeight={isNonMobileScreen ? "" : "bold"}
-            color={isNonMobileScreen ? "blue" : "white"}
+            color={isNonMobileScreen ? "blue" : "maroon"}
             align={isNonMobileScreen ? "center " : "left"}
             sx={{
               marginBottom: 10,

@@ -81,29 +81,8 @@ export const Success = () => {
     setDisabled(true);
 
     try {
-      // const headers = {
-      //   "Content-Type": "application/json",
-      //   // Authorization: "Bearer my-token",
-      // };
-      // const data = {
-      //   data: isresult,
-      // };
-
-      // axios
-      //   .post(
-      //     "/create-pdf",
-      //     isresult,
-      //     { headers }
-      //   )
-      //   .then((response) => {
-      //     console.log(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
       const savedUserResponse = await fetch(
-        //"https://nodejs-production-f19e.up.railway.app/create-pdf",
-         "/create-pdf",
+        "/create-pdf",
 
         {
           method: "POST",
@@ -182,7 +161,6 @@ export const Success = () => {
                   fontSize: "15px",
                   mb: 3,
                 }}
-               
                 align="center"
               >
                 {userInfo.email}
@@ -193,7 +171,8 @@ export const Success = () => {
                 }}
                 align="center"
               >
-               for   the complete breakdown, implications and suggestions of scores
+                for the complete breakdown, implications and suggestions of
+                scores
               </Typography>
             </DialogContentText>
           </DialogContent>
@@ -209,7 +188,11 @@ export const Success = () => {
             variant="contained"
             disabled={disabled}
           >
-            Finish
+            {disabled ? (
+              <Typography> Computing </Typography>
+            ) : (
+              <Typography>Finish</Typography>
+            )}
           </Button>
           {/* </DialogActions> */}
         </Dialog>

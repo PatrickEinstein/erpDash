@@ -14,6 +14,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Document } from "react-pdf";
+import { useState } from "react";
+import { faker } from "@faker-js/faker";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,8 +29,8 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function ProfileCard() {
-  const [expanded, setExpanded] = React.useState(false);
+export default function ProfileCard({file, firstName, lastName, email, companyName, products }) {
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -38,7 +41,9 @@ export default function ProfileCard() {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            <Avatar
+            src={faker.image.avatar()}
+            />
           </Avatar>
         }
         action={
@@ -46,18 +51,17 @@ export default function ProfileCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        Company
+        Name={companyName}
         subheader="September 14, 2016"
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
-      />
+     
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This is for ERP
+        <Typography variant="body2" color="text.secondary" sx={{
+          fontWeight:"bold",
+          fontsize: 20
+        }}>
+       {firstName} {lastName}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -78,16 +82,9 @@ export default function ProfileCard() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Company Name</Typography>
-          <Typography paragraph>title</Typography>
-          <Typography paragraph></Typography>
-          something
-          <Typography paragraph></Typography>
-          something
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then
-            serve.
-          </Typography>
+         {firstName} {lastName}
+         <Typography>Everythingn about these nigga is here</Typography>
+         {file}
         </CardContent>
       </Collapse>
     </Card>

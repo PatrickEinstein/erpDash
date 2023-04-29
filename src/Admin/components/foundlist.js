@@ -1,42 +1,95 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Typography } from "@mui/material";
+import { setSelectedUser } from "../../redux/result_reducer";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
-  height:40,
+  textAlign: "center",
+  height: 40,
   color: theme.palette.text.secondary,
 }));
 
 export default function Foundlist() {
+  const dispatch = useDispatch();
+  const paramsForSearch = useSelector((state) => state.result.Params.value);
 
+  const [theUserOrAllUser, setTheUserorAllUser] = useState([]);
 
-  // axios.get('https://example.com/api/users')
-  // .then(response => {
-  //   console.log(response.data);
-  // })
-  // .catch(error => {
-  //   console.error(error);
-  // });
+  const findAllUsers = async () => {
+    try {
+      const savedUserResponse = await fetch(
+        "http://localhost:5000/users/alluser"
+      );
+      const savedUsers = await savedUserResponse.json();
+      setTheUserorAllUser(savedUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+  const findThisUser = async () => {
+    try {
+      const savedUserResponse = await fetch(
+        "http://localhost:5000/users/thisuser",
         {
-            [1, 2, 3, 4, 5, 6, 7, 8,9 ,10].map((i, index) =>(
-                <Grid item xs={12} key={i}>
-                <Item>A found Result</Item>
-              </Grid>
-            ))
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            parameter: paramsForSearch,
+          }),
         }
-       
-      
+      );
+      const user = await savedUserResponse.json();
+
+      setTheUserorAllUser(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    try {
+      if (paramsForSearch === undefined || null || "") {
+        findAllUsers();
+      } else {
+        findThisUser();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [paramsForSearch]);
+
+  return (
+    <Box sx={{ flexGrow: 1, height: 500 }}>
+      <Typography align="center">
+        Total users :{" "}
+        {theUserOrAllUser?.users ? theUserOrAllUser?.users?.length : 0}
+      </Typography>
+      <Grid container spacing={2}>
+        {theUserOrAllUser?.users?.map(
+          ({ i, index, firstName, lastName, file }) => (
+            <Grid item xs={12} key={file}>
+              <Item
+                onClick={() => {
+                  dispatch(
+                    setSelectedUser({ index, firstName, lastName, file })
+                  );
+                }}
+              >
+                {firstName} {lastName}
+              </Item>
+            </Grid>
+          )
+        )}
       </Grid>
     </Box>
   );
