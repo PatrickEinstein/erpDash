@@ -23,6 +23,7 @@ import ScreenshotButton from "./DownloadButton";
 import { ArrowLeft } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { Breakdown } from "./admin-breakdown";
+import ScreenshotButtonPDF from "./PdfButton";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -159,7 +160,7 @@ export default function ProfileCard() {
             >
               {/* <Breakdown/> */}
             </Box>
-
+            {/* <ScreenshotButtonPDF /> */}
             <ScreenshotButton />
             <Button
               variant="outlined"
