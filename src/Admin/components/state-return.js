@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export const StateReturn = () => {
 
   const FindUserInfo = useSelector((state) => state.result.selecteduser);
-  console.log(FindUserInfo)
+//   console.log(FindUserInfo)
   const {
     firstName,
     Products,

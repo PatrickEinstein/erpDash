@@ -9,19 +9,19 @@ import { Success } from "./pages/success";
 import { Main2 } from "./pages/Main2";
 import { Breakdown } from "./pages/breakdown";
 import { Recommends1 } from "./recommendations/recommendation";
-import Dashboard from "../Admin";
+import{ Dashboard} from "../Admin/index";
 import ProfilePage from "../Admin/components/Profilepage";
-import { DashBoard } from "../Admin/components/Dashboard";
+//import Dashboard from "../Admin/index"
 /** react routes */
 const router = createBrowserRouter([
   {
     path: "/prep",
     element: <Main></Main>,
   },
-  {
-    path: "/",
-    element: <Dashboard />,
-  },
+  // {
+  //   path: "/",
+  //   element: <Main2/>,
+  // },
   {
     path: "/quiz",
     element: <Categories />,
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <Breakdown />,
   },
   {
-    path: "/admin",
+    path: "/",
     element: <Dashboard />,
   },
   {

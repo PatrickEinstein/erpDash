@@ -98,9 +98,10 @@ export default function ProfileCard() {
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Stack spacing={"3"}
-          justifyContent="space-between"
-          alignItems="center"
+          <Stack
+            spacing={"3"}
+            justifyContent="space-between"
+            // alignItems="center"
           >
             <Typography
               sx={{
@@ -165,7 +166,7 @@ export default function ProfileCard() {
               sx={{
                 backgroundColor: "blue",
               }}
-              onClick={() => navigate("/admin")}
+              onClick={() => navigate("/")}
             >
               <Typography
                 sx={{
