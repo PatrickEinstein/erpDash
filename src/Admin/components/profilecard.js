@@ -143,6 +143,7 @@ export default function ProfileCard({
               height: 300,
               width: "100%",
               overflow:"auto"
+              
             }}
             // onClick={handlePdfClick}
           >

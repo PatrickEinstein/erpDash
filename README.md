@@ -10,7 +10,7 @@ this array is reduced and used to update redux
 
 at the final submit click, the redux state is conveyed wholly to the database
 
-
+<!-- "proxy": "https://nodejs-production-f19e.up.railway.app", -->
 
 
 

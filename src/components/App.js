@@ -18,10 +18,10 @@ const router = createBrowserRouter([
     path: "/prep",
     element: <Main></Main>,
   },
-  // {
-  //   path: "/",
-  //   element: <Main2/>,
-  // },
+  {
+    path: "/main",
+    element: <Main2/>,
+  },
   {
     path: "/quiz",
     element: <Categories />,
