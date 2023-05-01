@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function Dashboard(props) {
+export function Dashboard() {
   return (
     <Stack>
       <SearchAppBar />
@@ -47,4 +47,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+
