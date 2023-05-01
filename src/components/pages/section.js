@@ -24,6 +24,7 @@ import {
   setCat13,
   setCat14,
   setCat15,
+  setChecker,
 } from "../../redux/result_reducer";
 import { useEffect } from "react";
 import { setTotalResult } from "../../redux/result_reducer";
@@ -64,10 +65,11 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
   const sum = result.reduce(function (total, amount) {
     return total + amount;
   });
+
   console.log(`total sum of category ${C} is ${sum}`);
 
   const averagesum = averageSum(sum);
-
+  dispatch(setChecker(averagesum));
   console.log(`average sum of category ${C} is ${averagesum}`);
 
   const dispatchers = () => {
@@ -139,7 +141,7 @@ export const Sections = ({ Q1, Q2, Q3, Q4, Q5, C }) => {
       alignItems="center"
       sx={{
         height: "auto",
-        opacity:0.8
+        opacity: 0.8,
       }}
     >
       <ol>

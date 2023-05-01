@@ -23,8 +23,12 @@ export const resultReducer = createSlice({
     selecteduser: {},
     totalResult: 0,
     totalAveragePercentage: 0,
+    buttonChecker : 0,
   },
   reducers: {
+    setChecker: (state, action) => {
+      state.buttonChecker = action.payload;
+    },
     setUser: (state, action) => {
       state.user = action.payload;
     },
@@ -154,6 +158,7 @@ export const resultReducer = createSlice({
 });
 
 export const {
+  setChecker,
   setSelectedUser,
   setUser,
   setTotalAveragePercentage,

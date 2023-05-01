@@ -3,17 +3,33 @@ import { allQuestions } from "./questions";
 import { Sections } from "../pages/section";
 import { Heading } from "./questionsHeading";
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCat15 } from "../../redux/result_reducer";
 import { useNavigate } from "react-router-dom";
 import Pagination from "react-mui-pagination";
 import { useMediaQuery } from "@material-ui/core";
-import { Success } from "../pages/success";
 import { shades } from "../../theme";
-// import { useTheme } from "@mui/material/styles";
+import { useEffect } from "react";
 import { useTheme } from "@mui/material";
 import { Opacity } from "@material-ui/icons";
 export const Categories = () => {
+  const isChecked = useSelector((state) => state.result.buttonChecker);
+  const [disable, setDisable] = useState(false);
+
+  const Checker = () => {
+    try {
+      if (isChecked < 1) {
+        setDisable(true);
+      } else setDisable(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    Checker();
+  });
+
   const {
     palette: { neutral },
   } = useTheme();
@@ -70,13 +86,15 @@ export const Categories = () => {
         }}
       >
         {" "}
-        <Pagination
-          page={count + 1}
-          setPage={handleChange}
-          total={150}
-          numOfLinks={isNonMediaScreens ? 10 : 2}
-          hideFirstLast
-        />
+        {isChecked > 1 ? (
+          <Pagination
+            page={count + 1}
+            setPage={handleChange}
+            total={150}
+            numOfLinks={isNonMediaScreens ? 10 : 2}
+            hideFirstLast
+          />
+        ) : null}
         <Button
           variant="contained"
           color="info"
@@ -97,9 +115,11 @@ export const Categories = () => {
             {`category ${C}`}
           </Typography>
         </Button>
-        <Box sx={{
-          width:"70%"
-        }}>
+        <Box
+          sx={{
+            width: "70%",
+          }}
+        >
           <Typography
             variant="h4"
             sx={{
@@ -166,15 +186,19 @@ export const Categories = () => {
           )}
 
           {count < 15 ? (
-            <IconButton onClick={onNext}>
+            <IconButton onClick={onNext} disabled={disable}>
               <Button
                 variant="contained"
                 color="info"
-                style={{
-                  backgroundColor: "red",
-                  height: 25,
-                  ml: "40%",
-                }}
+                style={
+                  disable
+                    ? {
+                        backgroundColor: "red",
+                        height: 25,
+                        ml: "40%",
+                      }
+                    : { backgroundColor: "blue", height: 25, ml: "40%" }
+                }
               >
                 <Typography
                   variant="subtitle2"
@@ -184,12 +208,12 @@ export const Categories = () => {
                   }}
                   // color={theme.palette.primary.main}
                 >
-                  Next
+                  {disable ? " " : "Next"}
                 </Typography>
               </Button>
             </IconButton>
           ) : (
-            <IconButton onClick={handleSubmit}>
+            <IconButton onClick={handleSubmit} disabled={disable}>
               <Button
                 variant="contained"
                 color="info"
