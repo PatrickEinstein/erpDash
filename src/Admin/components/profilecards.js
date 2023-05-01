@@ -20,8 +20,9 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ResponsiveGrid() {
   const paramsForSearch = useSelector((state) => state.result.Params.value);
   const userToProfile = useSelector((state) => state.result.selecteduser);
-  const { file, firstName, lastName, email, companyName, products, phone } =
+  const { file, firstName, lastName, email, companyName, products, phone,pdf } =
     userToProfile;
+    // console.log(userToProfile)
   //console.log(file)
  
 
@@ -53,6 +54,7 @@ export default function ResponsiveGrid() {
                   companyName={companyName}
                   email={email}
                   file={file}
+                  pdf={pdf}
                 />
               </Grid>
             </Grid>

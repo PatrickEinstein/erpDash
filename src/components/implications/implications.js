@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { AveragePercentageLogic, RecommendationsImplication } from "../recommendations/recommendationImplicationLogic";
+import {
+  AveragePercentageLogic,
+  RecommendationsImplication,
+} from "../recommendations/recommendationImplicationLogic";
+
+
 
 export const Implications1 = () => {
   const isresult = useSelector((state) => state.result);

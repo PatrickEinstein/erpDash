@@ -14,11 +14,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Document } from "react-pdf";
+import { PostPdf } from "./Converter";
 import { useState } from "react";
 import { faker } from "@faker-js/faker";
 import { Box, Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Buffer } from "buffer";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -39,11 +40,15 @@ export default function ProfileCard({
   companyName,
   Products,
   phone,
+  pdf,
 }) {
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const handlePdfClick = () => {
+    PostPdf(pdf);
   };
 
   return (
@@ -77,12 +82,6 @@ export default function ProfileCard({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton> */}
-        {/* <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton> */}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -144,10 +143,10 @@ export default function ProfileCard({
               backgroundColor: "aqua",
               height: 300,
               width: "100%",
+              overflow: "scroll",
             }}
-          >
-            {/* <PdfViewer2 pdfData={file}/> */}
-          </Box>
+            onClick={handlePdfClick}
+          ></Box>
           <Button
             variant="outlined"
             sx={{

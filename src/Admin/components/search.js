@@ -62,10 +62,9 @@ export default function SearchAppBar() {
     setValue(e.target.value);
   };
   useEffect(() => {
-    dispatch(setParams({value : value}));
+    dispatch(setParams({ value: value }));
   }, [value]);
 
-  console.log(value);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
