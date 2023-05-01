@@ -20,14 +20,18 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ResponsiveGrid() {
   const paramsForSearch = useSelector((state) => state.result.Params.value);
   const userToProfile = useSelector((state) => state.result.selecteduser);
-  const { file, firstName, lastName, email, companyName, products, phone,pdf } =
-    userToProfile;
-    // console.log(userToProfile)
+  const {
+    file,
+    firstName,
+    lastName,
+    email,
+    companyName,
+    products,
+    phone,
+    pdf,
+  } = userToProfile;
+
   //console.log(file)
- 
-
-
-  
 
   return (
     <Stack justifyContent="space-around">
@@ -37,7 +41,7 @@ export default function ResponsiveGrid() {
           <Box
             sx={{
               flexGrow: 1,
-              marginLeft: "20%",
+              marginLeft: "5%",
               marginTop: 1,
             }}
           >
@@ -46,7 +50,7 @@ export default function ResponsiveGrid() {
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={2} sm={12} md={8}>
+              <Grid item xs={2} sm={12} md={10}>
                 <ProfileCard
                   firstName={firstName}
                   lastName={lastName}
@@ -58,7 +62,6 @@ export default function ResponsiveGrid() {
                 />
               </Grid>
             </Grid>
-         
           </Box>
         </>
       ) : (

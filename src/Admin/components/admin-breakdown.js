@@ -7,9 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useSelector } from "react-redux";
-import { faker } from "@faker-js/faker";
-import { Grading } from "../recommendations/recommendation";
+import { Grading } from "./admin-recommendations";
 import { useMediaQuery } from "@mui/material";
 
 import {
@@ -29,7 +27,7 @@ import {
   Recommends14,
   Recommends15,
   RecommendsAveragePercentage,
-} from "../recommendations/recommendation";
+} from "./admin-recommendations";
 import {
   Implications1,
   Implications2,
@@ -47,8 +45,10 @@ import {
   Implications14,
   Implications15,
   ImplicationsAveragePercentage,
-} from "../implications/implications";
+} from "./admin-implications";
 import { Box, Stack, Typography } from "@mui/material";
+import { StateReturn } from "./state-return";
+import { ComponentDownloadButton } from "./DownloadButton";
 
 const columns = [
   { id: "name", label: "Category", minWidth: 100 },
@@ -72,16 +72,9 @@ const columns = [
     align: "left",
     format: (value) => value.toLocaleString("en-US"),
   },
-  // {
-  //   id: "density",
-  //   label: "Suggestion",
-  //   minWidth: 100,
-  //   align: "right",
-  //   format: (value) => value.toFixed(2),
-  // },
 ];
 
- function createData(name, code, population, size, density) {
+function createData(name, code, population, size, density) {
   // const density = population / size;
   return { name, code, population, size, density };
 }
@@ -100,24 +93,33 @@ export const Breakdown = () => {
     setPage(0);
   };
 
-  const isresult = useSelector((state) => state.result);
-  const cat1 = isresult.cat1;
-  const cat2 = isresult.cat2;
-  const cat3 = isresult.cat3;
-  const cat4 = isresult.cat4;
-  const cat5 = isresult.cat5;
-  const cat6 = isresult.cat6;
-  const cat7 = isresult.cat7;
-  const cat8 = isresult.cat8;
-  const cat9 = isresult.cat9;
-  const cat10 = isresult.cat10;
-  const cat11 = isresult.cat11;
-  const cat12 = isresult.cat12;
-  const cat13 = isresult.cat13;
-  const cat14 = isresult.cat14;
-  const cat15 = isresult.cat15;
-  const istotalAveragePercentage = isresult.totalAveragePercentage;
-  const userInfo = isresult.user;
+  const Stater = StateReturn();
+  const {
+    firstName,
+    Products,
+    lastName,
+    phone,
+    email,
+    pdf,
+    companyName,
+    cat1,
+    cat2,
+    cat3,
+    cat4,
+    cat5,
+    cat6,
+    cat7,
+    cat8,
+    cat9,
+    cat10,
+    cat11,
+    cat12,
+    cat13,
+    cat14,
+    cat15,
+    totalAveragePercentage,
+    totalResult,
+  } = Stater;
 
   const rows = [
     createData("Positioning", cat1, <Implications1 />, <Recommends1 />),
@@ -140,7 +142,7 @@ export const Breakdown = () => {
       "Total Score",
       <Typography sx={{ fontWeight: "bold" }}>
         {" "}
-        {istotalAveragePercentage.toFixed(2) + "%"}{" "}
+        {totalAveragePercentage?.toFixed(2) + "%"}{" "}
       </Typography>,
       <ImplicationsAveragePercentage />,
       <RecommendsAveragePercentage />
@@ -164,7 +166,7 @@ export const Breakdown = () => {
         height={15}
         sx={{
           padding: 3,
-          height:"auto",
+          height: "auto",
           width: "auto",
         }}
       >
@@ -175,11 +177,11 @@ export const Breakdown = () => {
             fontSize: "25px",
             fontWeight: "bold",
             mb: "auto",
-           height:"auto"
+            height: "auto",
           }}
         >
           {" "}
-          Export Readiness Test for {userInfo.companyName}
+          Export Readiness Test for {companyName}
         </Typography>
       </Box>
       <Paper sx={{ width: "auto" }}>
@@ -217,23 +219,23 @@ export const Breakdown = () => {
                   <Stack>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}> Name :</span>{" "}
-                      {userInfo.firstName} {userInfo.lastName}
+                      {firstName} {lastName}
                     </Typography>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}> Company :</span>{" "}
-                      {userInfo.companyName}
+                      {companyName}
                     </Typography>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}> Products : </span>{" "}
-                      {userInfo.Products}
+                      {Products}
                     </Typography>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}>Email :</span>{" "}
-                      {userInfo.email}
+                      {email}
                     </Typography>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}> Phone : </span>
-                      {userInfo.phone}
+                      {phone}
                     </Typography>
                   </Stack>
                 </TableCell>
@@ -277,16 +279,8 @@ export const Breakdown = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
       </Paper>
+     
     </Stack>
   );
 };

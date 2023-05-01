@@ -81,7 +81,7 @@ export const Success = () => {
     setDisabled(true);
 
     try {
-      const savedUserResponse = await fetch("/create-pdf", {
+      const savedUserResponse = await fetch("create-pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
 

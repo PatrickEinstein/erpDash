@@ -1,36 +1,59 @@
-import React, { useState } from 'react';
+import React, { useRef } from "react";
+import html2canvas from "html2canvas";
+import { Breakdown } from "./admin-breakdown";
+import { Stack } from "@mui/material";
+const ScreenshotButton = () => {
+  const componentRef = useRef(null);
 
-function DownloadButton({fileUrl, setFileUrl, url}) {
-//   const [fileUrl, setFileUrl] = useState('');
+  const handleScreenshotClick = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
 
-  const handleDownloadClick = async () => {
-    // replace "https://example.com/file.pdf" with the URL of your file
-    // const url = url
-    const response = await fetch(url);
-    const blob = await response.blob();
-    const urlCreator = window.URL || window.webkitURL;
-    const fileUrl = urlCreator.createObjectURL(blob);
-    setFileUrl(fileUrl);
-  }
+    html2canvas(document.documentElement, {
+      canvas,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const blob = dataURItoBlob(imgData);
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = url;
+      a.download = "result.png";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  };
+
+  const dataURItoBlob = (dataURI) => {
+    const byteString = atob(dataURI.split(",")[1]);
+    const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: mimeString });
+  };
 
   return (
-    <div>
-      <button onClick={handleDownloadClick}
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-        padding: '10px',
-        borderRadius: '5px',
-        cursor: 'pointer',
-      }}
-      >Download File</button>
-      {fileUrl && (
-        <a href={fileUrl} download="file.pdf">
-          Click here to download the file
-        </a>
-      )}
-    </div>
+    <Stack
+    justifyContent='space between'
+    alignItems="center"
+    >
+      <div ref={componentRef}>
+        <Breakdown />
+      </div>
+      <button onClick={handleScreenshotClick}>Save PDF</button>
+    </Stack>
   );
-}
+};
 
-export default DownloadButton;
+export default ScreenshotButton;

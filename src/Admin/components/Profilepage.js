@@ -19,9 +19,10 @@ import { useState } from "react";
 import { faker } from "@faker-js/faker";
 import { Box, Button, Stack } from "@mui/material";
 import { useSelector } from "react-redux";
-import DownloadButton from "./DownloadButton";
+import ScreenshotButton from "./DownloadButton";
 import { ArrowLeft } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
+import { Breakdown } from "./admin-breakdown";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,7 +36,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function ProfileCard() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [fileUrl, setFileUrl] = useState("");
   const [expanded, setExpanded] = useState(false);
   const Persontoview = useSelector((state) => state.result.selecteduser);
@@ -55,7 +56,7 @@ export default function ProfileCard() {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              <Avatar src={faker.image.avatar()} />
+              {firstName[0]}
             </Avatar>
           }
           action={
@@ -81,12 +82,12 @@ export default function ProfileCard() {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          {/* <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
-          </IconButton>
+          </IconButton> */}
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
@@ -97,7 +98,10 @@ export default function ProfileCard() {
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Stack spacing={"3"}>
+          <Stack spacing={"3"}
+          justifyContent="space-between"
+          alignItems="center"
+          >
             <Typography
               sx={{
                 fontWeight: "bold",
@@ -148,31 +152,30 @@ export default function ProfileCard() {
                 backgroundColor: "aqua",
                 height: 600,
                 width: "100%",
+                overflow: "auto",
+                height: "auto",
               }}
-            ></Box>
-            <Stack direction="row" justifyContent="space-between">
-              <DownloadButton
-                fileUrl={fileUrl}
-                setFileUrl={setFileUrl}
-                url={"/admin/profile"}
-              />
-              <Button
-                variant="outlined"
+            >
+              {/* <Breakdown/> */}
+            </Box>
+
+            <ScreenshotButton />
+            <Button
+              variant="outlined"
+              sx={{
+                backgroundColor: "blue",
+              }}
+              onClick={() => navigate("/admin")}
+            >
+              <Typography
                 sx={{
-                  backgroundColor: "blue",
+                  color: "white",
+                  width: "auto",
                 }}
-                onClick={() =>navigate('/admin')}
               >
-                <Typography
-                  sx={{
-                    color: "white",
-                    width: "auto",
-                  }}
-                >
-                  Back To Dashboard
-                </Typography>
-              </Button>
-            </Stack>
+                Back To Dashboard
+              </Typography>
+            </Button>
           </Stack>
         </Collapse>
       </Card>

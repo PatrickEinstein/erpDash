@@ -10,16 +10,15 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+import { Breakdown } from "./admin-breakdown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { PostPdf } from "./Converter";
 import { useState } from "react";
-import { faker } from "@faker-js/faker";
+
 import { Box, Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Buffer } from "buffer";
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -56,7 +55,7 @@ export default function ProfileCard({
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            Ex
+            {firstName[0]}
           </Avatar>
         }
         action={
@@ -143,10 +142,12 @@ export default function ProfileCard({
               backgroundColor: "aqua",
               height: 300,
               width: "100%",
-              overflow: "scroll",
+              overflow:"auto"
             }}
-            onClick={handlePdfClick}
-          ></Box>
+            // onClick={handlePdfClick}
+          >
+            <Breakdown/>
+          </Box>
           <Button
             variant="outlined"
             sx={{
