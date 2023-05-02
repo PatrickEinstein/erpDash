@@ -26,7 +26,7 @@ export default function Foundlist() {
   const findAllUsers = async () => {
     try {
       const savedUserResponse = await fetch(
-        "/users/alluser"
+        "users/alluser"
       );
       const savedUsers = await savedUserResponse.json();
 
