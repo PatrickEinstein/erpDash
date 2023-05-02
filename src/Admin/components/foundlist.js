@@ -23,33 +23,28 @@ export default function Foundlist() {
   const paramsForSearch = useSelector((state) => state.result.Params.value);
   const [theUserOrAllUser, setTheUserorAllUser] = useState([]);
 
-  const findAllUsers = async () => {
+  const FindAllUsers = async () => {
     try {
-      const savedUserResponse = await fetch(
-        "users/alluser"
-      );
+      const savedUserResponse = await fetch("users/alluser");
       const savedUsers = await savedUserResponse.json();
-
+      // console.log(savedUsers);
       setTheUserorAllUser(savedUsers);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const findThisUser = async () => {
+  const FindThisUser = async () => {
     try {
-      const savedUserResponse = await fetch(
-        "users/thisuser",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            parameter: paramsForSearch,
-          }),
-        }
-      );
+      const savedUserResponse = await fetch("users/thisuser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          parameter: paramsForSearch,
+        }),
+      });
       const user = await savedUserResponse.json();
-      // console.log(user);
+      console.log(user);
       setTheUserorAllUser(user);
     } catch (error) {
       console.log(`error ==>${error}`);
@@ -61,11 +56,11 @@ export default function Foundlist() {
       if (
         paramsForSearch === undefined ||
         paramsForSearch === null ||
-        paramsForSearch === ""
+        paramsForSearch === "" 
       ) {
-        findAllUsers();
+        FindAllUsers();
       } else {
-        findThisUser();
+        FindThisUser();
       }
     } catch (err) {
       console.log(err);

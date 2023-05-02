@@ -50,7 +50,7 @@ export default function ResponsiveGrid() {
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={2} sm={12} md={10}>
+              <Grid item xs={4} sm={12} md={10}>
                 <ProfileCard
                   firstName={firstName}
                   lastName={lastName}
