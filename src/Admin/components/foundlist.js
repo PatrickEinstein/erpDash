@@ -25,7 +25,9 @@ export default function Foundlist() {
 
   const findAllUsers = async () => {
     try {
-      const savedUserResponse = await fetch("https://nodejs-production-f19e.up.railway.app/users/alluser");
+      const savedUserResponse = await fetch(
+        "https://nodejs-production-f19e.up.railway.app/users/alluser"
+      );
       const savedUsers = await savedUserResponse.json();
 
       setTheUserorAllUser(savedUsers);
@@ -36,13 +38,16 @@ export default function Foundlist() {
 
   const findThisUser = async () => {
     try {
-      const savedUserResponse = await fetch("https://nodejs-production-f19e.up.railway.app/users/thisuser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          parameter: paramsForSearch,
-        }),
-      });
+      const savedUserResponse = await fetch(
+        "https://nodejs-production-f19e.up.railway.app/users/thisuser",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            parameter: paramsForSearch,
+          }),
+        }
+      );
       const user = await savedUserResponse.json();
       // console.log(user);
       setTheUserorAllUser(user);
@@ -68,7 +73,7 @@ export default function Foundlist() {
   }, [paramsForSearch]);
 
   return (
-    <Box sx={{ flexGrow: 1}}>
+    <Box sx={{ flexGrow: 1 }}>
       <Typography
         align="center"
         sx={{
@@ -156,12 +161,12 @@ export default function Foundlist() {
                     {firstName[0]}
                   </Avatar>
                   <Stack
-                  direction="row"
-                  spacing={2}
-                  alignContent="center"
-                  justifyContent="space-between"
-                >
-                  {firstName} {lastName}
+                    direction="row"
+                    spacing={2}
+                    alignContent="center"
+                    justifyContent="space-between"
+                  >
+                    {firstName} {lastName}
                   </Stack>
                 </Stack>
               </Item>

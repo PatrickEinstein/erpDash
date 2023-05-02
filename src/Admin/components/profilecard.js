@@ -19,7 +19,6 @@ import { useState } from "react";
 import { Box, Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -65,7 +64,6 @@ export default function ProfileCard({
         }
         Company
         Name={companyName}
-        subheader="September 14, 2016"
       />
 
       <CardContent>
@@ -142,12 +140,11 @@ export default function ProfileCard({
               backgroundColor: "aqua",
               height: 300,
               width: "100%",
-              overflow:"auto"
-              
+              overflow: "auto",
             }}
             // onClick={handlePdfClick}
           >
-            <Breakdown/>
+            <Breakdown />
           </Box>
           <Button
             variant="outlined"
