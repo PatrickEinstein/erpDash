@@ -26,7 +26,7 @@ export default function Foundlist() {
   const findAllUsers = async () => {
     try {
       const savedUserResponse = await fetch(
-        "https://nodejs-production-f19e.up.railway.app/users/alluser"
+        "/users/alluser"
       );
       const savedUsers = await savedUserResponse.json();
 
@@ -39,7 +39,7 @@ export default function Foundlist() {
   const findThisUser = async () => {
     try {
       const savedUserResponse = await fetch(
-        "https://nodejs-production-f19e.up.railway.app/users/thisuser",
+        "users/thisuser",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
