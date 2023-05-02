@@ -68,7 +68,7 @@ export default function Foundlist() {
   }, [paramsForSearch]);
 
   return (
-    <Box sx={{ flexGrow: 1, overflow: "scroll" }}>
+    <Box sx={{ flexGrow: 1}}>
       <Typography
         align="center"
         sx={{
