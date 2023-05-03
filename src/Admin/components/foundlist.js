@@ -21,14 +21,15 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Foundlist() {
   const dispatch = useDispatch();
   const paramsForSearch = useSelector((state) => state.result.Params.value);
-  const [theUserOrAllUser, setTheUserorAllUser] = useState([]);
+  const [theUserOrAllUser, setTheUserorAllUser] = useState();
 
   const FindAllUsers = async () => {
     try {
       const savedUserResponse = await fetch("users/alluser");
       const savedUsers = await savedUserResponse.json();
-      // console.log(savedUsers);
-      setTheUserorAllUser(savedUsers);
+      const foundUSer = savedUsers.users;
+      console.log(foundUSer);
+      setTheUserorAllUser(foundUSer);
     } catch (error) {
       console.log(error);
     }
@@ -44,26 +45,23 @@ export default function Foundlist() {
         }),
       });
       const user = await savedUserResponse.json();
-      console.log(user);
-      setTheUserorAllUser(user);
+      const foundUSer = user.users;
+      console.log(foundUSer);
+      setTheUserorAllUser(foundUSer);
     } catch (error) {
       console.log(`error ==>${error}`);
     }
   };
 
   useEffect(() => {
-    try {
-      if (
-        paramsForSearch === undefined ||
-        paramsForSearch === null ||
-        paramsForSearch === "" 
-      ) {
-        FindAllUsers();
-      } else {
-        FindThisUser();
-      }
-    } catch (err) {
-      console.log(err);
+    if (
+      paramsForSearch === undefined ||
+      paramsForSearch === null ||
+      paramsForSearch === ""
+    ) {
+      FindAllUsers();
+    } else {
+      FindThisUser();
     }
   }, [paramsForSearch]);
 
@@ -75,12 +73,12 @@ export default function Foundlist() {
           marginBottom: 5,
         }}
       >
-        {theUserOrAllUser?.users
-          ? `Total users  ${theUserOrAllUser?.users?.length}`
+        {theUserOrAllUser
+          ? `Total users  ${theUserOrAllUser?.length}`
           : "Did not find any match"}
       </Typography>
       <Grid container spacing={2}>
-        {theUserOrAllUser?.users?.map(
+        {theUserOrAllUser?.map(
           ({
             firstName,
             Products,
