@@ -26,8 +26,8 @@ export default function Foundlist() {
   const FindAllUsers = async () => {
     try {
       const savedUserResponse = await fetch("/users/alluser");
-      // const savedUsers = await savedUserResponse.json();
-      const savedUsers = await savedUserResponse
+       const savedUsers = await savedUserResponse.json();
+      // const savedUsers = await savedUserResponse;
       const foundUSer = savedUsers.users;
       console.log(foundUSer);
       setTheUserorAllUser(foundUSer);
@@ -45,8 +45,8 @@ export default function Foundlist() {
           parameter: paramsForSearch,
         }),
       });
-      // const user = await savedUserResponse.json();
-      const user = await savedUserResponse
+      const user = await savedUserResponse.json();
+      // const user = await savedUserResponse;
       const foundUSer = user.users;
       console.log(foundUSer);
       setTheUserorAllUser(foundUSer);
