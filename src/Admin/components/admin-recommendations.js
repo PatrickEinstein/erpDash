@@ -8,7 +8,7 @@ import {
 
 export const Recommends1 = () => {
   const FindUserInfo = useSelector((state) => state.result.selecteduser);
-
+console.log(FindUserInfo)
   const cat1 = FindUserInfo.cat1;
   return (
     //POSITION
