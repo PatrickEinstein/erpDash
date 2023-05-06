@@ -229,7 +229,7 @@ export const Breakdown = () => {
                               width: 100,
                               height: 100,
                               position: "absolute",
-                              left: "-430%",
+                              left: "-530%",
                               top: -20,
                             }
                           : {

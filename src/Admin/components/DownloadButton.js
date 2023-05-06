@@ -50,9 +50,15 @@ const ScreenshotButton = () => {
     <Stack justifyContent="center" alignItems="center">
       <div
         ref={componentRef}
-        style={{
-          paddingLeft: 200,
-        }}
+        style={
+          isNonMobileScreen
+            ? {
+              padding:0
+            }
+            : {
+                paddingLeft: 200,
+              }
+        }
       >
         <Breakdown />
       </div>
