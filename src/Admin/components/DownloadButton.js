@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import { Breakdown } from "./admin-breakdown";
 import { Stack } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
+
 const ScreenshotButton = () => {
+  const isNonMobileScreen = useMediaQuery("(min-width:500px)");
   const componentRef = useRef(null);
 
   const handleScreenshotClick = () => {
@@ -45,10 +48,17 @@ const ScreenshotButton = () => {
 
   return (
     <Stack justifyContent="center" alignItems="center">
-      <div ref={componentRef}>
+      <div
+        ref={componentRef}
+        style={{
+          paddingLeft: 200,
+        }}
+      >
         <Breakdown />
       </div>
-      <button onClick={handleScreenshotClick}>Save PDF</button>
+      {isNonMobileScreen ? (
+        <button onClick={handleScreenshotClick}>Save PDF</button>
+      ) : null}
     </Stack>
   );
 };

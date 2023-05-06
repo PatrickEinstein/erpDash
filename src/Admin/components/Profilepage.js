@@ -48,7 +48,7 @@ export default function ProfileCard() {
   const dates = date.toLocaleDateString();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
+  const isNonMobileScreen = useMediaQuery("(min-width:600px)");
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -71,6 +71,7 @@ export default function ProfileCard() {
         }
       >
         <CardHeader
+        width="100%"
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
               {firstName[0]}

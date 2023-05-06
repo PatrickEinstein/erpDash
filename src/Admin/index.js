@@ -3,11 +3,12 @@ import React from "react";
 import SearchAppBar from "./components/search";
 import ProfileCard from "./components/profilecard";
 import { styled } from "@mui/material/styles";
-
+import { useMediaQuery } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import ProfileCards from "./components/profilecards";
 import Foundlist from "./components/foundlist";
+import { SignalCellularNullTwoTone } from "@mui/icons-material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -18,11 +19,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export function Dashboard() {
+  const isNonMobileScreen = useMediaQuery("(min-width:600px)");
   return (
     <Stack>
       <SearchAppBar />
       <Stack justifyContent="space-between" direction="row">
-        <Box
+       {isNonMobileScreen ? <Box
           sx={{
             width: "30%",
             backgroundColor: "aqua",
@@ -33,11 +35,17 @@ export function Dashboard() {
           }}
         >
           <Foundlist />
-        </Box>
+        </Box>: null
+        }
+
 
         <Box
-          sx={{
+          sx={isNonMobileScreen ? {
             width: "70%",
+          } : {
+            width: "100%",
+            marginright: 1,
+            marginLeft:0,
           }}
         >
           <ProfileCards />

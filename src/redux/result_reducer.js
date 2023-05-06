@@ -24,8 +24,12 @@ export const resultReducer = createSlice({
     totalResult: 0,
     totalAveragePercentage: 0,
     buttonChecker : 0,
+    sidebar: 0,
   },
   reducers: {
+    togglesidebar: (state, action) => {
+      state.sidebar = action.payload;
+    },
     setChecker: (state, action) => {
       state.buttonChecker = action.payload;
     },
@@ -158,6 +162,7 @@ export const resultReducer = createSlice({
 });
 
 export const {
+  togglesidebar,
   setChecker,
   setSelectedUser,
   setUser,

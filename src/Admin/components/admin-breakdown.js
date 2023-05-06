@@ -82,7 +82,7 @@ function createData(name, code, population, size, density) {
 export const Breakdown = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(18);
-  const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
+  const isNonMobileScreen = useMediaQuery("(min-width:600px)");
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -237,7 +237,7 @@ export const Breakdown = () => {
                               height: 100,
                               position: "absolute",
                               top: 0,
-                              left: "-180%",
+                              left: "-300%",
                             }
                       }
                     >
