@@ -44,10 +44,7 @@ const ScreenshotButton = () => {
   };
 
   return (
-    <Stack
-    justifyContent='space between'
-    alignItems="center"
-    >
+    <Stack justifyContent="center" alignItems="center">
       <div ref={componentRef}>
         <Breakdown />
       </div>

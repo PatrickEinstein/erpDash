@@ -24,6 +24,7 @@ import { ArrowLeft } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { Breakdown } from "./admin-breakdown";
 import ScreenshotButtonPDF from "./PdfButton";
+import { useMediaQuery } from "@mui/material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,16 +44,31 @@ export default function ProfileCard() {
   const Persontoview = useSelector((state) => state.result.selecteduser);
   const { file, firstName, lastName, email, companyName, Products, phone } =
     Persontoview;
+  const date = new Date();
+  const dates = date.toLocaleDateString();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <>
+    <Stack alignItems="center" justifyContent="center">
       <Card
-        sx={{
-          margin: 20,
-        }}
+        sx={
+          isNonMobileScreen
+            ? {
+                margin: 20,
+              }
+            : {
+                marginLeft: 0,
+                overflow: "scroll",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }
+        }
       >
         <CardHeader
           avatar={
@@ -67,7 +83,7 @@ export default function ProfileCard() {
           }
           Company
           Name={companyName}
-          subheader="September 14, 2016"
+          subheader={date + " " + year + " " + month}
         />
 
         <CardContent>
@@ -181,7 +197,7 @@ export default function ProfileCard() {
           </Stack>
         </Collapse>
       </Card>
-    </>
+    </Stack>
   );
 }
 {

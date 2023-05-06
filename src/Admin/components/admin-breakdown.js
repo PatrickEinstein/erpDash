@@ -153,9 +153,9 @@ export const Breakdown = () => {
   return (
     <Stack
       sx={
-        !isNonMobileScreen
+        isNonMobileScreen
           ? {
-              margin: 10,
+              margin: 0,
             }
           : {
               margin: 0,
@@ -190,7 +190,7 @@ export const Breakdown = () => {
             <TableHead>
               <TableRow>
                 <TableCell align="center" colSpan={1}>
-                  <Box
+                  {/* <Box
                     sx={{
                       width: 100,
                       height: 100,
@@ -199,12 +199,12 @@ export const Breakdown = () => {
                     <img
                       src={process.env.PUBLIC_URL + "/explogo.jpeg"}
                       style={{
-                        width: 80,
-                        height: 80,
+                        width: 150,
+                        height: 150,
                         backgroundColor: "white",
                       }}
                     />
-                  </Box>
+                  </Box> */}
                 </TableCell>
                 <TableCell align="left" colSpan={2}>
                   {/* <Typography
@@ -216,6 +216,40 @@ export const Breakdown = () => {
                   </Typography> */}
                 </TableCell>
                 <TableCell align="left" colSpan={3}>
+                <Stack
+                    direction="row"
+                    sx={{
+                      position: "relative",
+                    }}
+                  >
+                    <Box
+                      sx={
+                        isNonMobileScreen
+                          ? {
+                              width: 100,
+                              height: 100,
+                              position: "absolute",
+                              left: "-430%",
+                              top: -20,
+                            }
+                          : {
+                              width: 100,
+                              height: 100,
+                              position: "absolute",
+                              top: 0,
+                              left: "-180%",
+                            }
+                      }
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/explogo.jpeg"}
+                        style={{
+                          width: 150,
+                          height: 150,
+                          backgroundColor: "white",
+                        }}
+                      />
+                      </Box>
                   <Stack>
                     <Typography>
                       <span style={{ fontWeight: "bold" }}> Name :</span>{" "}
@@ -237,6 +271,7 @@ export const Breakdown = () => {
                       <span style={{ fontWeight: "bold" }}> Phone : </span>
                       {phone}
                     </Typography>
+                  </Stack>
                   </Stack>
                 </TableCell>
               </TableRow>
