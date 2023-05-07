@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { setParams, togglesidebar } from "../../redux/result_reducer";
 import { useEffect } from "react";
+import { useMediaQuery } from "@mui/material";
 import Foundlist from "./foundlist";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,6 +60,7 @@ export default function SearchAppBar() {
   const [value, setValue] = useState();
   const [sidebaron, setSidebaron] = useState(false);
   const dispatch = useDispatch();
+  const isNonMobileScreen = useMediaQuery("(max-width:500px)");
   const togglesidebarOnOff = useSelector((state) => state.result.sidebar);
   console.log(togglesidebarOnOff);
   const handleClick = () => {
@@ -78,7 +80,7 @@ export default function SearchAppBar() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
+            {!isNonMobileScreen && (<IconButton
               size="large"
               edge="start"
               color="inherit"
@@ -87,7 +89,7 @@ export default function SearchAppBar() {
               onClick={handleClick}
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton>)}
             <Typography
               variant="h6"
               noWrap
