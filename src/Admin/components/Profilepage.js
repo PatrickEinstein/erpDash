@@ -67,6 +67,7 @@ export default function ProfileCard() {
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "center",
+                paddingLeft:20
               }
         }
       >

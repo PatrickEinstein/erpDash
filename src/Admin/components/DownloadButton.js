@@ -53,8 +53,8 @@ const ScreenshotButton = () => {
         style={
           isNonMobileScreen
             ? {
-              padding:0
-            }
+                padding: 0,
+              }
             : {
                 paddingLeft: 200,
               }
@@ -62,7 +62,7 @@ const ScreenshotButton = () => {
       >
         <Breakdown />
       </div>
-      {isNonMobileScreen ? (
+      {!isNonMobileScreen ? (
         <button onClick={handleScreenshotClick}>Save PDF</button>
       ) : null}
     </Stack>
