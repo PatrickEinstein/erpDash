@@ -29,7 +29,7 @@ import { Buffer } from "buffer";
 
 export const PostPdf = async ({ data }) => {
   console.log(`file ==> ${data}`);
-  await fetch("http://localhost:5000/users/pdf", {
+  await fetch("http://erp-server-production-30fd.up.railway.app/users/pdf", {
     method: "POST",
     headers: {
       "Content-Type":
@@ -55,7 +55,7 @@ export const PostPdf = async ({ data }) => {
 //   const buffer = Buffer.from(data);
 //   formData.append("pdf", buffer, { filename: "file.pdf" });
 
-//   const response = await fetch("http://localhost:5000/users/pdf", {
+//   const response = await fetch("http://erp-server-production-30fd.up.railway.app/users/pdf", {
 //     method: "POST",
 //     // headers: { "Content-Type": "multipart/form-data" },
 //     headers: { "Content-Type": "application/json; charset=utf-8" },
