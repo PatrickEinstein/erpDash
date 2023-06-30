@@ -26,10 +26,10 @@ export default function Foundlist() {
   const FindAllUsers = async () => {
     try {
       const savedUserResponse = await fetch(
-        "erp-server-production-30fd.up.railway.app/users/alluser"
+        "https://erp-server-eight.vercel.app/users/alluser"
       );
       const savedUsers = await savedUserResponse.json();
-      // const savedUsers = await savedUserResponse;
+      console.log(savedUsers);
       const foundUSer = savedUsers.users;
       console.log(foundUSer);
       setTheUserorAllUser(foundUSer);
@@ -41,7 +41,7 @@ export default function Foundlist() {
   const FindThisUser = async () => {
     try {
       const savedUserResponse = await fetch(
-        "erp-server-production-30fd.up.railway.app/users/thisuser",
+        "https://erp-server-eight.vercel.app/users/thisuser",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,7 +51,7 @@ export default function Foundlist() {
         }
       );
       const user = await savedUserResponse.json();
-      // const user = await savedUserResponse;
+      console.log(user);
       const foundUSer = user.users;
       console.log(foundUSer);
       setTheUserorAllUser(foundUSer);
